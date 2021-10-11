@@ -105,44 +105,21 @@ Le seul écueil est de connaître les solutions à gérer à travers cet outil d
 
 Il faut alors voir Ansible comme une surcouche sans état (mis en intermédiaire qui fonctionne de manière très simple) qui intègre d’autres solutions ou s’intègre à d’autres facilement. Ansible Tower et son fork OpenSource AWX renforcent cette capacité de manière crédible en ajoutant des fonctions de gestion des utilisateurs, du code et des secrets.
 
-# Diagrammes de fonctionnement de Ansible Composants d'Ansible
+# Diagrammes de fonctionnement de Ansible
 
 ![bg w:900](https://d33wubrfki0l68.cloudfront.net/a164b363e34dda928909d730081a7dc574f07155/90a4d/assets/images/ansible/linklight/how-ansible-works-diagram-01.svg.png)
 
 - Users: Users who create Ansible playbook has a direct connection with ansible automation Engine.
 - Ansible playbook: It also interacts with the ansible automation engine and configuration Management Database
 - Public or Private cloud: They help in interacting with all the modules and API with this but also with the entire cloud which proves that it has security measures as well.
-- Inventory: Inventory which is a part of the automation engine helps in provisioning and internal provisioning using automation.
-- API: It helps in creating necessary API for the interaction of end to end modules.
-- Modules: The modules are directly run using playbooks the modules can control all services, packages, AWS cloud formation, etc.
-- Plugins: All necessary cache, logging purpose, ansibles functioning all help in creating augmented ansible’s core.
+- ControlNode (Ansible automation engine): Un serveur de contrôle sous Linux (Dans notre cas Debian 11) avec Python 3.* dessus.
+  - Inventory: Inventory which is a part of the automation engine helps in provisioning and internal provisioning using automation.
+  - API: It helps in creating necessary API for the interaction of end to end modules.
+  - Modules: The modules are directly run using playbooks the modules can control all services, packages, AWS cloud formation, etc.
+  - Plugins: All necessary cache, logging purpose, ansibles functioning all help in creating augmented ansible’s core.
 - Networking: It helps to automate different networks that make use of all agentless frames and generate useful configurations.
-- Hosts: Hosts here refers to the machines like Linux or Unix machines which are getting automated using Ansible.
+- Hosts/ManagedNodes: Hosts here refers to the machines like Linux or Unix machines which are getting automated using Ansible.
 - CMDB (Configuration Management Database): It is a kind of repository that consists of an entire network of computers of operational or IT infrastructure.
-
-## Ansible Automation Engine
-En vue de contrôler des noeuds distants, des utilisateurs lancent des "playbooks" à partir d’un ControlNode grâce à Ansible Engine.
-
-Ansible Engine utilise différents composants comme :
-
-- Des modules
-- Des plugins
-- Une API
-- Un inventaire
-
----
-
-Control Node:
-La machine de contrôle doit être un hôte Linux / Unix (par exemple, Red Hat Enterprise Linux, Debian, CentOS, OS X, BSD, Ubuntu), et Python 2.7 ou Python 3.5+ sont requis. Avec une version Windows 10 Pro, il est possible d’utiliser Ansible avec WSL, voir Can Ansible run on Windows?
-
-Managed Nodes:
-- Les noeuds gérés, s’ils sont en Linux/Unix, doivent disposer de Python 3. SSH est alors le mode de connexion préféré.
-- Ansible peut également gérer des noeuds Windows. Dans ce cas, on utilise PowerShell à distance de manière native au lieu de SSH.
-- Le matériel d’infrastructure réseau (“constructeurs”), pare-feux, serveurs de stockage, fournisseurs IaaS, solutions de virtualisation sont supportés via SSH, NETCONF/YANG ou encore via des API HTTP REST.
-
----
-
-![bg w:900](https://d33wubrfki0l68.cloudfront.net/0d369d7d07a6c678df31e6eebdd5985202dbfa57/8c1f8/assets/images/ansible/linklight/local_execution.svg.png)
 
 ---
 
