@@ -16,7 +16,7 @@ Options
 =======
 
 CodeMaster
-~~~~~~~~~~
+----------
 
 Robot Turtules
 --------------
@@ -25,4 +25,4 @@ Primo / Cubetto
 ---------------
 
 Options
-=======
+~~~~~~~
