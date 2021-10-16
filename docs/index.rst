@@ -15,6 +15,54 @@ Hello World
 
 .. toctree::
    :maxdepth: 2
+   :caption: AWS
+
+   AWS/link
+
+.. toctree::
+   :maxdepth: 2
+   :caption: ELK Stack
+
+   ELK Stack/link
+
+.. toctree::
+   :maxdepth: 2
+   :caption: NGINX
+
+   NGINX/link
+
+.. toctree::
+   :maxdepth: 2
+   :caption: OpenSSH
+
+   OpenSSH/link
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Packer
+
+   Packer/link
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Proxmox
+
+   Proxmox/link
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Terraform
+
+   Terraform/link
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Vagrant
+
+   Vagrant/link
+
+.. toctree::
+   :maxdepth: 2
    :caption: WireGuard
 
    WireGuard/Installation
