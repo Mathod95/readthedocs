@@ -1,7 +1,7 @@
 Introduction
 ++++++++++++
 
-.. image:: /docs/Ansible/img/ansible_logo.png
+.. image:: https://cdn.icon-icons.com/icons2/2699/PNG/512/ansible_logo_icon_169596.png
   :alt: Ansible_Logo
   :scale: 100
   :align: center
