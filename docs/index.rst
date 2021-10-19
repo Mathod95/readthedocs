@@ -13,6 +13,7 @@ Welcome to Read the fucking docs !
    Ansible/Introduction
    Ansible/Presentation
    Ansible/Installation
+   Ansible/Collections
 
 .. toctree::
    :maxdepth: 2

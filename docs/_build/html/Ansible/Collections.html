@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collections &mdash; Mathod  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../AWS/link.html" />
+    <link rel="prev" title="Installation" href="Installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Mathod
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Ansible</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Presentation.html">Presentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#listing-collections">Listing collections</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WireGuard</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WireGuard/Installation.html">Introduction</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mathod</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Collections</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Ansible/Collections.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="collections">
+<h1>Collections<a class="headerlink" href="#collections" title="Permalink to this headline"></a></h1>
+<section id="listing-collections">
+<h2>Listing collections<a class="headerlink" href="#listing-collections" title="Permalink to this headline"></a></h2>
+<p>To list installed collections, run <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>. This shows all of the installed collections found in the configured collections search paths. It will also show collections under development which contain a galaxy.yml file instead of a MANIFEST.json. The path where the collections are located are displayed as well as version information. If no version information is available, a <code class="docutils literal notranslate"><span class="pre">*</span></code> is displayed for the version number.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mathod@ANSIBLE:/etc/apt/sources.list.d$ ansible-galaxy collection list
+
+# /usr/lib/python3/dist-packages/ansible_collections
+Collection                    Version
+----------------------------- -------
+amazon.aws                    1.5.1
+ansible.netcommon             2.4.0
+ansible.posix                 1.3.0
+ansible.utils                 2.4.2
+ansible.windows               1.7.3
+arista.eos                    2.2.0
+awx.awx                       19.4.0
+azure.azcollection            1.9.0
+check_point.mgmt              2.1.0
+chocolatey.chocolatey         1.1.0
+cisco.aci                     2.1.0
+cisco.asa                     2.1.0
+cisco.intersight              1.0.17
+cisco.ios                     2.5.0
+cisco.iosxr                   2.5.0
+cisco.meraki                  2.4.2
+cisco.mso                     1.2.0
+cisco.nso                     1.0.3
+cisco.nxos                    2.7.0
+cisco.ucs                     1.6.0
+cloudscale_ch.cloud           2.2.0
+community.aws                 1.5.0
+community.azure               1.0.0
+community.crypto              1.9.5
+community.digitalocean        1.10.0
+community.docker              1.10.0
+community.fortios             1.0.0
+community.general             3.8.0
+community.google              1.0.0
+community.grafana             1.2.3
+community.hashi_vault         1.3.2
+community.hrobot              1.1.1
+community.kubernetes          1.2.1
+community.kubevirt            1.0.0
+community.libvirt             1.0.2
+community.mongodb             1.3.1
+community.mysql               2.3.0
+community.network             3.0.0
+community.okd                 1.1.2
+community.postgresql          1.5.0
+community.proxysql            1.3.0
+community.rabbitmq            1.1.0
+community.routeros            1.2.0
+community.skydive             1.0.0
+community.sops                1.1.0
+community.vmware              1.15.0
+community.windows             1.7.0
+community.zabbix              1.4.0
+containers.podman             1.8.1
+cyberark.conjur               1.1.0
+cyberark.pas                  1.0.7
+dellemc.enterprise_sonic      1.1.0
+dellemc.openmanage            3.6.0
+dellemc.os10                  1.1.1
+dellemc.os6                   1.0.7
+dellemc.os9                   1.0.4
+f5networks.f5_modules         1.11.1
+fortinet.fortimanager         2.1.3
+fortinet.fortios              2.1.2
+frr.frr                       1.0.3
+gluster.gluster               1.0.2
+google.cloud                  1.0.2
+hetzner.hcloud                1.6.0
+hpe.nimble                    1.1.3
+ibm.qradar                    1.0.3
+infinidat.infinibox           1.2.4
+inspur.sm                     1.3.0
+junipernetworks.junos         2.6.0
+kubernetes.core               1.2.1
+mellanox.onyx                 1.0.0
+netapp.aws                    21.6.0
+netapp.azure                  21.9.0
+netapp.cloudmanager           21.11.0
+netapp.elementsw              21.6.1
+netapp.ontap                  21.12.0
+netapp.um_info                21.7.0
+netapp_eseries.santricity     1.2.13
+netbox.netbox                 3.1.2
+ngine_io.cloudstack           2.2.1
+ngine_io.exoscale             1.0.0
+ngine_io.vultr                1.1.0
+openstack.cloud               1.5.1
+openvswitch.openvswitch       2.0.2
+ovirt.ovirt                   1.6.4
+purestorage.flasharray        1.11.0
+purestorage.flashblade        1.7.0
+sensu.sensu_go                1.12.0
+servicenow.servicenow         1.0.6
+splunk.es                     1.0.2
+t_systems_mms.icinga_director 1.23.0
+theforeman.foreman            2.2.0
+vyos.vyos                     2.6.0
+wti.remote                    1.0.1
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../AWS/link.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mathias FELIX.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

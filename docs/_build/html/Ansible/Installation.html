@@ -18,7 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="../AWS/link.html" />
+    <link rel="next" title="Collections" href="Collections.html" />
     <link rel="prev" title="Presentation" href="Presentation.html" /> 
 </head>
 
@@ -42,7 +42,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Presentation.html">Presentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#installing-ansible-via-ppa">Installing Ansible via PPA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-ansible-via-ppa-on-debian">Installing Ansible via PPA on Debian</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#upgrade-ansible-via-ppa">Upgrade Ansible via PPA</a></li>
 </ul>
 </li>
@@ -55,6 +55,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Collections.html">Collections</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">WireGuard</span></p>
 <ul>
@@ -87,8 +88,77 @@
              
   <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
-<section id="installing-ansible-via-ppa">
-<h2>Installing Ansible via PPA<a class="headerlink" href="#installing-ansible-via-ppa" title="Permalink to this headline"></a></h2>
+<section id="installing-ansible-via-ppa-on-debian">
+<h2>Installing Ansible via PPA on Debian<a class="headerlink" href="#installing-ansible-via-ppa-on-debian" title="Permalink to this headline"></a></h2>
+<p>Debian users may use the same source as the Ubuntu PPA (using the following table).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Debian</p></th>
+<th class="head"></th>
+<th class="head"><p>Ubuntu</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Debian 11 (Bullseye)</p></td>
+<td><p>-&gt;</p></td>
+<td><p>Ubuntu 20.04 (Focal)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Debian 10 (Buster)</p></td>
+<td><p>-&gt;</p></td>
+<td><p>Ubuntu 18.04 (Bionic)</p></td>
+</tr>
+<tr class="row-even"><td><p>Debian 9 (Stretch)</p></td>
+<td><p>-&gt;</p></td>
+<td><p>Ubuntu 16.04 (Xenial)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Debian 8 (Jessie)</p></td>
+<td><p>-&gt;</p></td>
+<td><p>Ubuntu 14.04 (Trusty)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of Ansible 4.0.0, new releases will only be generated for Ubuntu 18.04 (Bionic) or later releases.</p>
+</div>
+<p>Add the following line to <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code> or <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/ansible.list</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> -e <span class="s2">&quot;deb http://ppa.launchpad.net/ansible/ansible/ubuntu focal main&quot;</span> <span class="p">|</span> sudo tee -a /etc/apt/sources.list.d/ansible.list
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>On Debian you should probably need to install gnupg gnupg2 gnupg1</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install gnupg gnupg2 gnupg1
+</pre></div>
+</div>
+</div>
+<p>Then run these commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+sudo apt update
+sudo apt install ansible
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To check the version of Ansible use the command <code class="docutils literal notranslate"><span class="pre">ansible</span> <span class="pre">--version</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mathod@ANSIBLE:/etc/apt/sources.list.d$ ansible --version
+ansible <span class="o">[</span>core <span class="m">2</span>.11.6<span class="o">]</span>
+config <span class="nv">file</span> <span class="o">=</span> /etc/ansible/ansible.cfg
+configured module search <span class="nv">path</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;/home/mathod/.ansible/plugins/modules&#39;</span>, <span class="s1">&#39;/usr/share/ansible/plugins/modules&#39;</span><span class="o">]</span>
+ansible python module <span class="nv">location</span> <span class="o">=</span> /usr/lib/python3/dist-packages/ansible
+ansible collection <span class="nv">location</span> <span class="o">=</span> /home/mathod/.ansible/collections:/usr/share/ansible/collections
+executable <span class="nv">location</span> <span class="o">=</span> /usr/bin/ansible
+python <span class="nv">version</span> <span class="o">=</span> <span class="m">3</span>.9.2 <span class="o">(</span>default, Feb <span class="m">28</span> <span class="m">2021</span>, <span class="m">17</span>:03:44<span class="o">)</span> <span class="o">[</span>GCC <span class="m">10</span>.2.1 <span class="m">20210110</span><span class="o">]</span>
+jinja <span class="nv">version</span> <span class="o">=</span> <span class="m">2</span>.11.3
+<span class="nv">libyaml</span> <span class="o">=</span> True
+</pre></div>
+</div>
+</div>
 <section id="upgrade-ansible-via-ppa">
 <h3>Upgrade Ansible via PPA<a class="headerlink" href="#upgrade-ansible-via-ppa" title="Permalink to this headline"></a></h3>
 </section>
@@ -109,7 +179,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Presentation.html" class="btn btn-neutral float-left" title="Presentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../AWS/link.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Collections.html" class="btn btn-neutral float-right" title="Collections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
