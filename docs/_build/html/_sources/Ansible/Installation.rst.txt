@@ -53,7 +53,7 @@ Then run these commands:
 .. note::
     To check the version of Ansible use the command ``ansible --version``
 
-    .. code-block:: bash
+    .. code-block::
 
         mathod@ANSIBLE:/etc/apt/sources.list.d$ ansible --version
         ansible [core 2.11.6] 
