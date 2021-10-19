@@ -76,531 +76,531 @@
              
   <section id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"></a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example config file for ansible -- https://ansible.com/</span>
-<span class="c1"># =======================================================</span>
-
-<span class="c1"># Nearly all parameters can be overridden in ansible-playbook</span>
-<span class="c1"># or with command line flags. Ansible will read ANSIBLE_CONFIG,</span>
-<span class="c1"># ansible.cfg in the current working directory, .ansible.cfg in</span>
-<span class="c1"># the home directory, or /etc/ansible/ansible.cfg, whichever it</span>
-<span class="c1"># finds first</span>
-
-<span class="c1"># For a full list of available options, run ansible-config list or see the</span>
-<span class="c1"># documentation: https://docs.ansible.com/ansible/latest/reference_appendices/config.html.</span>
-
-<span class="p">[</span><span class="n">defaults</span><span class="p">]</span>
-<span class="c1">#inventory       = /etc/ansible/hosts</span>
-<span class="c1">#library         = ~/.ansible/plugins/modules:/usr/share/ansible/plugins/modules</span>
-<span class="c1">#module_utils    = ~/.ansible/plugins/module_utils:/usr/share/ansible/plugins/module_utils</span>
-<span class="c1">#remote_tmp      = ~/.ansible/tmp</span>
-<span class="c1">#local_tmp       = ~/.ansible/tmp</span>
-<span class="c1">#forks           = 5</span>
-<span class="c1">#poll_interval   = 0.001</span>
-<span class="c1">#ask_pass        = False</span>
-<span class="c1">#transport       = smart</span>
-
-<span class="c1"># Plays will gather facts by default, which contain information about</span>
-<span class="c1"># the remote system.</span>
-<span class="c1">#</span>
-<span class="c1"># smart - gather by default, but don&#39;t regather if already gathered</span>
-<span class="c1"># implicit - gather by default, turn off with gather_facts: False</span>
-<span class="c1"># explicit - do not gather by default, must say gather_facts: True</span>
-<span class="c1">#gathering = implicit</span>
-
-<span class="c1"># This only affects the gathering done by a play&#39;s gather_facts directive,</span>
-<span class="c1"># by default gathering retrieves all facts subsets</span>
-<span class="c1"># all - gather all subsets</span>
-<span class="c1"># network - gather min and network facts</span>
-<span class="c1"># hardware - gather hardware facts (longest facts to retrieve)</span>
-<span class="c1"># virtual - gather min and virtual facts</span>
-<span class="c1"># facter - import facts from facter</span>
-<span class="c1"># ohai - import facts from ohai</span>
-<span class="c1"># You can combine them using comma (ex: network,virtual)</span>
-<span class="c1"># You can negate them using ! (ex: !hardware,!facter,!ohai)</span>
-<span class="c1"># A minimal set of facts is always gathered.</span>
-<span class="c1">#</span>
-<span class="c1">#gather_subset = all</span>
-
-<span class="c1"># some hardware related facts are collected</span>
-<span class="c1"># with a maximum timeout of 10 seconds. This</span>
-<span class="c1"># option lets you increase or decrease that</span>
-<span class="c1"># timeout to something more suitable for the</span>
-<span class="c1"># environment.</span>
-<span class="c1">#</span>
-<span class="c1">#gather_timeout = 10</span>
-
-<span class="c1"># Ansible facts are available inside the ansible_facts.* dictionary</span>
-<span class="c1"># namespace. This setting maintains the behaviour which was the default prior</span>
-<span class="c1"># to 2.5, duplicating these variables into the main namespace, each with a</span>
-<span class="c1"># prefix of &#39;ansible_&#39;.</span>
-<span class="c1"># This variable is set to True by default for backwards compatibility. It</span>
-<span class="c1"># will be changed to a default of &#39;False&#39; in a future release.</span>
-<span class="c1">#</span>
-<span class="c1">#inject_facts_as_vars = True</span>
-
-<span class="c1"># Paths to search for collections, colon separated</span>
-<span class="c1"># collections_paths = ~/.ansible/collections:/usr/share/ansible/collections</span>
-
-<span class="c1"># Paths to search for roles, colon separated</span>
-<span class="c1">#roles_path = ~/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles</span>
-
-<span class="c1"># Host key checking is enabled by default</span>
-<span class="c1">#host_key_checking = True</span>
-
-<span class="c1"># You can only have one &#39;stdout&#39; callback type enabled at a time. The default</span>
-<span class="c1"># is &#39;default&#39;. The &#39;yaml&#39; or &#39;debug&#39; stdout callback plugins are easier to read.</span>
-<span class="c1">#</span>
-<span class="c1">#stdout_callback = default</span>
-<span class="c1">#stdout_callback = yaml</span>
-<span class="c1">#stdout_callback = debug</span>
-
-
-<span class="c1"># Ansible ships with some plugins that require enabling</span>
-<span class="c1"># this is done to avoid running all of a type by default.</span>
-<span class="c1"># These setting lists those that you want enabled for your system.</span>
-<span class="c1"># Custom plugins should not need this unless plugin author disables them</span>
-<span class="c1"># by default.</span>
-<span class="c1">#</span>
-<span class="c1"># Enable callback plugins, they can output to stdout but cannot be &#39;stdout&#39; type.</span>
-<span class="c1">#callbacks_enabled = timer, mail</span>
-
-<span class="c1"># Determine whether includes in tasks and handlers are &quot;static&quot; by</span>
-<span class="c1"># default. As of 2.0, includes are dynamic by default. Setting these</span>
-<span class="c1"># values to True will make includes behave more like they did in the</span>
-<span class="c1"># 1.x versions.</span>
-<span class="c1">#</span>
-<span class="c1">#task_includes_static = False</span>
-<span class="c1">#handler_includes_static = False</span>
-
-<span class="c1"># Controls if a missing handler for a notification event is an error or a warning</span>
-<span class="c1">#error_on_missing_handler = True</span>
-
-<span class="c1"># Default timeout for connection plugins</span>
-<span class="c1">#timeout = 10</span>
-
-<span class="c1"># Default user to use for playbooks if user is not specified</span>
-<span class="c1"># Uses the connection plugin&#39;s default, normally the user currently executing Ansible,</span>
-<span class="c1"># unless a different user is specified here.</span>
-<span class="c1">#</span>
-<span class="c1">#remote_user = root</span>
-
-<span class="c1"># Logging is off by default unless this path is defined.</span>
-<span class="c1">#log_path = /var/log/ansible.log</span>
-
-<span class="c1"># Default module to use when running ad-hoc commands</span>
-<span class="c1">#module_name = command</span>
-
-<span class="c1"># Use this shell for commands executed under sudo.</span>
-<span class="c1"># you may need to change this to /bin/bash in rare instances</span>
-<span class="c1"># if sudo is constrained.</span>
-<span class="c1">#</span>
-<span class="c1">#executable = /bin/sh</span>
-
-<span class="c1"># By default, variables from roles will be visible in the global variable</span>
-<span class="c1"># scope. To prevent this, set the following option to True, and only</span>
-<span class="c1"># tasks and handlers within the role will see the variables there</span>
-<span class="c1">#</span>
-<span class="c1">#private_role_vars = False</span>
-
-<span class="c1"># List any Jinja2 extensions to enable here.</span>
-<span class="c1">#jinja2_extensions = jinja2.ext.do,jinja2.ext.i18n</span>
-
-<span class="c1"># If set, always use this private key file for authentication, same as</span>
-<span class="c1"># if passing --private-key to ansible or ansible-playbook</span>
-<span class="c1">#</span>
-<span class="c1">#private_key_file = /path/to/file</span>
-
-<span class="c1"># If set, configures the path to the Vault password file as an alternative to</span>
-<span class="c1"># specifying --vault-password-file on the command line. This can also be</span>
-<span class="c1"># an executable script that returns the vault password to stdout.</span>
-<span class="c1">#</span>
-<span class="c1">#vault_password_file = /path/to/vault_password_file</span>
-
-<span class="c1"># Format of string {{ ansible_managed }} available within Jinja2</span>
-<span class="c1"># templates indicates to users editing templates files will be replaced.</span>
-<span class="c1"># replacing {file}, {host} and {uid} and strftime codes with proper values.</span>
-<span class="c1">#</span>
-<span class="c1">#ansible_managed = Ansible managed: {file} modified on %Y-%m-%d %H:%M:%S by {uid} on {host}</span>
-
-<span class="c1"># {file}, {host}, {uid}, and the timestamp can all interfere with idempotence</span>
-<span class="c1"># in some situations so the default is a static string:</span>
-<span class="c1">#</span>
-<span class="c1">#ansible_managed = Ansible managed</span>
-
-<span class="c1"># By default, ansible-playbook will display &quot;Skipping [host]&quot; if it determines a task</span>
-<span class="c1"># should not be run on a host. Set this to &quot;False&quot; if you don&#39;t want to see these &quot;Skipping&quot;</span>
-<span class="c1"># messages. NOTE: the task header will still be shown regardless of whether or not the</span>
-<span class="c1"># task is skipped.</span>
-<span class="c1">#</span>
-<span class="c1">#display_skipped_hosts = True</span>
-
-<span class="c1"># By default, if a task in a playbook does not include a name: field then</span>
-<span class="c1"># ansible-playbook will construct a header that includes the task&#39;s action but</span>
-<span class="c1"># not the task&#39;s args. This is a security feature because ansible cannot know</span>
-<span class="c1"># if the *module* considers an argument to be no_log at the time that the</span>
-<span class="c1"># header is printed. If your environment doesn&#39;t have a problem securing</span>
-<span class="c1"># stdout from ansible-playbook (or you have manually specified no_log in your</span>
-<span class="c1"># playbook on all of the tasks where you have secret information) then you can</span>
-<span class="c1"># safely set this to True to get more informative messages.</span>
-<span class="c1">#</span>
-<span class="c1">#display_args_to_stdout = False</span>
-
-<span class="c1"># Ansible will raise errors when attempting to dereference</span>
-<span class="c1"># Jinja2 variables that are not set in templates or action lines. Uncomment this line</span>
-<span class="c1"># to change this behavior.</span>
-<span class="c1">#</span>
-<span class="c1">#error_on_undefined_vars = False</span>
-
-<span class="c1"># Ansible may display warnings based on the configuration of the</span>
-<span class="c1"># system running ansible itself. This may include warnings about 3rd party packages or</span>
-<span class="c1"># other conditions that should be resolved if possible.</span>
-<span class="c1"># To disable these warnings, set the following value to False:</span>
-<span class="c1">#</span>
-<span class="c1">#system_warnings = True</span>
-
-<span class="c1"># Ansible may display deprecation warnings for language</span>
-<span class="c1"># features that should no longer be used and will be removed in future versions.</span>
-<span class="c1"># To disable these warnings, set the following value to False:</span>
-<span class="c1">#</span>
-<span class="c1">#deprecation_warnings = True</span>
-
-<span class="c1"># Ansible can optionally warn when usage of the shell and</span>
-<span class="c1"># command module appear to be simplified by using a default Ansible module</span>
-<span class="c1"># instead. These warnings can be silenced by adjusting the following</span>
-<span class="c1"># setting or adding warn=yes or warn=no to the end of the command line</span>
-<span class="c1"># parameter string. This will for example suggest using the git module</span>
-<span class="c1"># instead of shelling out to the git command.</span>
-<span class="c1">#</span>
-<span class="c1">#command_warnings = False</span>
-
-
-<span class="c1"># set plugin path directories here, separate with colons</span>
-<span class="c1">#action_plugins     = /usr/share/ansible/plugins/action</span>
-<span class="c1">#become_plugins     = /usr/share/ansible/plugins/become</span>
-<span class="c1">#cache_plugins      = /usr/share/ansible/plugins/cache</span>
-<span class="c1">#callback_plugins   = /usr/share/ansible/plugins/callback</span>
-<span class="c1">#connection_plugins = /usr/share/ansible/plugins/connection</span>
-<span class="c1">#lookup_plugins     = /usr/share/ansible/plugins/lookup</span>
-<span class="c1">#inventory_plugins  = /usr/share/ansible/plugins/inventory</span>
-<span class="c1">#vars_plugins       = /usr/share/ansible/plugins/vars</span>
-<span class="c1">#filter_plugins     = /usr/share/ansible/plugins/filter</span>
-<span class="c1">#test_plugins       = /usr/share/ansible/plugins/test</span>
-<span class="c1">#terminal_plugins   = /usr/share/ansible/plugins/terminal</span>
-<span class="c1">#strategy_plugins   = /usr/share/ansible/plugins/strategy</span>
-
-
-<span class="c1"># Ansible will use the &#39;linear&#39; strategy but you may want to try another one.</span>
-<span class="c1">#strategy = linear</span>
-
-<span class="c1"># By default, callbacks are not loaded for /bin/ansible. Enable this if you</span>
-<span class="c1"># want, for example, a notification or logging callback to also apply to</span>
-<span class="c1"># /bin/ansible runs</span>
-<span class="c1">#</span>
-<span class="c1">#bin_ansible_callbacks = False</span>
-
-
-<span class="c1"># Don&#39;t like cows?  that&#39;s unfortunate.</span>
-<span class="c1"># set to 1 if you don&#39;t want cowsay support or export ANSIBLE_NOCOWS=1</span>
-<span class="c1">#nocows = 1</span>
-
-<span class="c1"># Set which cowsay stencil you&#39;d like to use by default. When set to &#39;random&#39;,</span>
-<span class="c1"># a random stencil will be selected for each task. The selection will be filtered</span>
-<span class="c1"># against the `cow_enabled` option below.</span>
-<span class="c1">#</span>
-<span class="c1">#cow_selection = default</span>
-<span class="c1">#cow_selection = random</span>
-
-<span class="c1"># When using the &#39;random&#39; option for cowsay, stencils will be restricted to this list.</span>
-<span class="c1"># it should be formatted as a comma-separated list with no spaces between names.</span>
-<span class="c1"># NOTE: line continuations here are for formatting purposes only, as the INI parser</span>
-<span class="c1">#       in python does not support them.</span>
-<span class="c1">#</span>
-<span class="c1">#cowsay_enabled_stencils=bud-frogs,bunny,cheese,daemon,default,dragon,elephant-in-snake,elephant,eyes,\</span>
-<span class="c1">#              hellokitty,kitty,luke-koala,meow,milk,moofasa,moose,ren,sheep,small,stegosaurus,\</span>
-<span class="c1">#              stimpy,supermilker,three-eyes,turkey,turtle,tux,udder,vader-koala,vader,www</span>
-
-<span class="c1"># Don&#39;t like colors either?</span>
-<span class="c1"># set to 1 if you don&#39;t want colors, or export ANSIBLE_NOCOLOR=1</span>
-<span class="c1">#</span>
-<span class="c1">#nocolor = 1</span>
-
-<span class="c1"># If set to a persistent type (not &#39;memory&#39;, for example &#39;redis&#39;) fact values</span>
-<span class="c1"># from previous runs in Ansible will be stored. This may be useful when</span>
-<span class="c1"># wanting to use, for example, IP information from one group of servers</span>
-<span class="c1"># without having to talk to them in the same playbook run to get their</span>
-<span class="c1"># current IP information.</span>
-<span class="c1">#</span>
-<span class="c1">#fact_caching = memory</span>
-
-<span class="c1"># This option tells Ansible where to cache facts. The value is plugin dependent.</span>
-<span class="c1"># For the jsonfile plugin, it should be a path to a local directory.</span>
-<span class="c1"># For the redis plugin, the value is a host:port:database triplet: fact_caching_connection = localhost:6379:0</span>
-<span class="c1">#</span>
-<span class="c1">#fact_caching_connection=/tmp</span>
-
-<span class="c1"># retry files</span>
-<span class="c1"># When a playbook fails a .retry file can be created that will be placed in ~/</span>
-<span class="c1"># You can enable this feature by setting retry_files_enabled to True</span>
-<span class="c1"># and you can change the location of the files by setting retry_files_save_path</span>
-<span class="c1">#</span>
-<span class="c1">#retry_files_enabled = False</span>
-<span class="c1">#retry_files_save_path = ~/.ansible-retry</span>
-
-<span class="c1"># prevents logging of task data, off by default</span>
-<span class="c1">#no_log = False</span>
-
-<span class="c1"># prevents logging of tasks, but only on the targets, data is still logged on the master/controller</span>
-<span class="c1">#no_target_syslog = False</span>
-
-<span class="c1"># Controls whether Ansible will raise an error or warning if a task has no</span>
-<span class="c1"># choice but to create world readable temporary files to execute a module on</span>
-<span class="c1"># the remote machine. This option is False by default for security. Users may</span>
-<span class="c1"># turn this on to have behaviour more like Ansible prior to 2.1.x. See</span>
-<span class="c1"># https://docs.ansible.com/ansible/latest/user_guide/become.html#risks-of-becoming-an-unprivileged-user</span>
-<span class="c1"># for more secure ways to fix this than enabling this option.</span>
-<span class="c1">#</span>
-<span class="c1">#allow_world_readable_tmpfiles = False</span>
-
-<span class="c1"># Controls what compression method is used for new-style ansible modules when</span>
-<span class="c1"># they are sent to the remote system. The compression types depend on having</span>
-<span class="c1"># support compiled into both the controller&#39;s python and the client&#39;s python.</span>
-<span class="c1"># The names should match with the python Zipfile compression types:</span>
-<span class="c1"># * ZIP_STORED (no compression. available everywhere)</span>
-<span class="c1"># * ZIP_DEFLATED (uses zlib, the default)</span>
-<span class="c1"># These values may be set per host via the ansible_module_compression inventory variable.</span>
-<span class="c1">#</span>
-<span class="c1">#module_compression = &#39;ZIP_DEFLATED&#39;</span>
-
-<span class="c1"># This controls the cutoff point (in bytes) on --diff for files</span>
-<span class="c1"># set to 0 for unlimited (RAM may suffer!).</span>
-<span class="c1">#</span>
-<span class="c1">#max_diff_size = 104448</span>
-
-<span class="c1"># Controls showing custom stats at the end, off by default</span>
-<span class="c1">#show_custom_stats = False</span>
-
-<span class="c1"># Controls which files to ignore when using a directory as inventory with</span>
-<span class="c1"># possibly multiple sources (both static and dynamic)</span>
-<span class="c1">#</span>
-<span class="c1">#inventory_ignore_extensions = ~, .orig, .bak, .ini, .cfg, .retry, .pyc, .pyo</span>
-
-<span class="c1"># This family of modules use an alternative execution path optimized for network appliances</span>
-<span class="c1"># only update this setting if you know how this works, otherwise it can break module execution</span>
-<span class="c1">#</span>
-<span class="c1">#network_group_modules=eos, nxos, ios, iosxr, junos, vyos</span>
-
-<span class="c1"># When enabled, this option allows lookups (via variables like {{lookup(&#39;foo&#39;)}} or when used as</span>
-<span class="c1"># a loop with `with_foo`) to return data that is not marked &quot;unsafe&quot;. This means the data may contain</span>
-<span class="c1"># jinja2 templating language which will be run through the templating engine.</span>
-<span class="c1"># ENABLING THIS COULD BE A SECURITY RISK</span>
-<span class="c1">#</span>
-<span class="c1">#allow_unsafe_lookups = False</span>
-
-<span class="c1"># set default errors for all plays</span>
-<span class="c1">#any_errors_fatal = False</span>
-
-
-<span class="p">[</span><span class="n">inventory</span><span class="p">]</span>
-<span class="c1"># List of enabled inventory plugins and the order in which they are used.</span>
-<span class="c1">#enable_plugins = host_list, script, auto, yaml, ini, toml</span>
-
-<span class="c1"># Ignore these extensions when parsing a directory as inventory source</span>
-<span class="c1">#ignore_extensions = .pyc, .pyo, .swp, .bak, ~, .rpm, .md, .txt, ~, .orig, .ini, .cfg, .retry</span>
-
-<span class="c1"># ignore files matching these patterns when parsing a directory as inventory source</span>
-<span class="c1">#ignore_patterns=</span>
-
-<span class="c1"># If &#39;True&#39; unparsed inventory sources become fatal errors, otherwise they are warnings.</span>
-<span class="c1">#unparsed_is_failed = False</span>
-
-
-<span class="p">[</span><span class="n">privilege_escalation</span><span class="p">]</span>
-<span class="c1">#become = False</span>
-<span class="c1">#become_method = sudo</span>
-<span class="c1">#become_ask_pass = False</span>
-
-
-<span class="c1">## Connection Plugins ##</span>
-
-<span class="c1"># Settings for each connection plugin go under a section titled &#39;[[plugin_name]_connection]&#39;</span>
-<span class="c1"># To view available connection plugins, run ansible-doc -t connection -l</span>
-<span class="c1"># To view available options for a connection plugin, run ansible-doc -t connection [plugin_name]</span>
-<span class="c1"># https://docs.ansible.com/ansible/latest/plugins/connection.html</span>
-
-<span class="p">[</span><span class="n">paramiko_connection</span><span class="p">]</span>
-<span class="c1"># uncomment this line to cause the paramiko connection plugin to not record new host</span>
-<span class="c1"># keys encountered. Increases performance on new host additions. Setting works independently of the</span>
-<span class="c1"># host key checking setting above.</span>
-<span class="c1">#record_host_keys=False</span>
-
-<span class="c1"># by default, Ansible requests a pseudo-terminal for commands executed under sudo. Uncomment this</span>
-<span class="c1"># line to disable this behaviour.</span>
-<span class="c1">#pty = False</span>
-
-<span class="c1"># paramiko will default to looking for SSH keys initially when trying to</span>
-<span class="c1"># authenticate to remote devices. This is a problem for some network devices</span>
-<span class="c1"># that close the connection after a key failure. Uncomment this line to</span>
-<span class="c1"># disable the Paramiko look for keys function</span>
-<span class="c1">#look_for_keys = False</span>
-
-<span class="c1"># When using persistent connections with Paramiko, the connection runs in a</span>
-<span class="c1"># background process. If the host doesn&#39;t already have a valid SSH key, by</span>
-<span class="c1"># default Ansible will prompt to add the host key. This will cause connections</span>
-<span class="c1"># running in background processes to fail. Uncomment this line to have</span>
-<span class="c1"># Paramiko automatically add host keys.</span>
-<span class="c1">#host_key_auto_add = True</span>
-
-
-<span class="p">[</span><span class="n">ssh_connection</span><span class="p">]</span>
-<span class="c1"># ssh arguments to use</span>
-<span class="c1"># Leaving off ControlPersist will result in poor performance, so use</span>
-<span class="c1"># paramiko on older platforms rather than removing it, -C controls compression use</span>
-<span class="c1">#ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s</span>
-
-<span class="c1"># The base directory for the ControlPath sockets.</span>
-<span class="c1"># This is the &quot;%(directory)s&quot; in the control_path option</span>
-<span class="c1">#</span>
-<span class="c1"># Example:</span>
-<span class="c1"># control_path_dir = /tmp/.ansible/cp</span>
-<span class="c1">#control_path_dir = ~/.ansible/cp</span>
-
-<span class="c1"># The path to use for the ControlPath sockets. This defaults to a hashed string of the hostname,</span>
-<span class="c1"># port and username (empty string in the config). The hash mitigates a common problem users</span>
-<span class="c1"># found with long hostnames and the conventional %(directory)s/ansible-ssh-%%h-%%p-%%r format.</span>
-<span class="c1"># In those cases, a &quot;too long for Unix domain socket&quot; ssh error would occur.</span>
-<span class="c1">#</span>
-<span class="c1"># Example:</span>
-<span class="c1"># control_path = %(directory)s/%%C</span>
-<span class="c1">#control_path =</span>
-
-<span class="c1"># Enabling pipelining reduces the number of SSH operations required to</span>
-<span class="c1"># execute a module on the remote server. This can result in a significant</span>
-<span class="c1"># performance improvement when enabled, however when using &quot;sudo:&quot; you must</span>
-<span class="c1"># first disable &#39;requiretty&#39; in /etc/sudoers</span>
-<span class="c1">#</span>
-<span class="c1"># By default, this option is disabled to preserve compatibility with</span>
-<span class="c1"># sudoers configurations that have requiretty (the default on many distros).</span>
-<span class="c1">#</span>
-<span class="c1">#pipelining = False</span>
-
-<span class="c1"># Control the mechanism for transferring files (old)</span>
-<span class="c1">#   * smart = try sftp and then try scp [default]</span>
-<span class="c1">#   * True = use scp only</span>
-<span class="c1">#   * False = use sftp only</span>
-<span class="c1">#scp_if_ssh = smart</span>
-
-<span class="c1"># Control the mechanism for transferring files (new)</span>
-<span class="c1"># If set, this will override the scp_if_ssh option</span>
-<span class="c1">#   * sftp  = use sftp to transfer files</span>
-<span class="c1">#   * scp   = use scp to transfer files</span>
-<span class="c1">#   * piped = use &#39;dd&#39; over SSH to transfer files</span>
-<span class="c1">#   * smart = try sftp, scp, and piped, in that order [default]</span>
-<span class="c1">#transfer_method = smart</span>
-
-<span class="c1"># If False, sftp will not use batch mode to transfer files. This may cause some</span>
-<span class="c1"># types of file transfer failures impossible to catch however, and should</span>
-<span class="c1"># only be disabled if your sftp version has problems with batch mode</span>
-<span class="c1">#sftp_batch_mode = False</span>
-
-<span class="c1"># The -tt argument is passed to ssh when pipelining is not enabled because sudo</span>
-<span class="c1"># requires a tty by default.</span>
-<span class="c1">#usetty = True</span>
-
-<span class="c1"># Number of times to retry an SSH connection to a host, in case of UNREACHABLE.</span>
-<span class="c1"># For each retry attempt, there is an exponential backoff,</span>
-<span class="c1"># so after the first attempt there is 1s wait, then 2s, 4s etc. up to 30s (max).</span>
-<span class="c1">#retries = 3</span>
-
-
-<span class="p">[</span><span class="n">persistent_connection</span><span class="p">]</span>
-<span class="c1"># Configures the persistent connection timeout value in seconds. This value is</span>
-<span class="c1"># how long the persistent connection will remain idle before it is destroyed.</span>
-<span class="c1"># If the connection doesn&#39;t receive a request before the timeout value</span>
-<span class="c1"># expires, the connection is shutdown. The default value is 30 seconds.</span>
-<span class="c1">#connect_timeout = 30</span>
-
-<span class="c1"># The command timeout value defines the amount of time to wait for a command</span>
-<span class="c1"># or RPC call before timing out. The value for the command timeout must</span>
-<span class="c1"># be less than the value of the persistent connection idle timeout (connect_timeout)</span>
-<span class="c1"># The default value is 30 second.</span>
-<span class="c1">#command_timeout = 30</span>
-
-
-<span class="c1">## Become Plugins ##</span>
-
-<span class="c1"># Settings for become plugins go under a section named &#39;[[plugin_name]_become_plugin]&#39;</span>
-<span class="c1"># To view available become plugins, run ansible-doc -t become -l</span>
-<span class="c1"># To view available options for a specific plugin, run ansible-doc -t become [plugin_name]</span>
-<span class="c1"># https://docs.ansible.com/ansible/latest/plugins/become.html</span>
-
-<span class="p">[</span><span class="n">sudo_become_plugin</span><span class="p">]</span>
-<span class="c1">#flags = -H -S -n</span>
-<span class="c1">#user = root</span>
-
-
-<span class="p">[</span><span class="n">selinux</span><span class="p">]</span>
-<span class="c1"># file systems that require special treatment when dealing with security context</span>
-<span class="c1"># the default behaviour that copies the existing context or uses the user default</span>
-<span class="c1"># needs to be changed to use the file system dependent context.</span>
-<span class="c1">#special_context_filesystems=fuse,nfs,vboxsf,ramfs,9p,vfat</span>
-
-<span class="c1"># Set this to True to allow libvirt_lxc connections to work without SELinux.</span>
-<span class="c1">#libvirt_lxc_noseclabel = False</span>
-
-
-<span class="p">[</span><span class="n">colors</span><span class="p">]</span>
-<span class="c1">#highlight = white</span>
-<span class="c1">#verbose = blue</span>
-<span class="c1">#warn = bright purple</span>
-<span class="c1">#error = red</span>
-<span class="c1">#debug = dark gray</span>
-<span class="c1">#deprecate = purple</span>
-<span class="c1">#skip = cyan</span>
-<span class="c1">#unreachable = red</span>
-<span class="c1">#ok = green</span>
-<span class="c1">#changed = yellow</span>
-<span class="c1">#diff_add = green</span>
-<span class="c1">#diff_remove = red</span>
-<span class="c1">#diff_lines = cyan</span>
-
-
-<span class="p">[</span><span class="n">diff</span><span class="p">]</span>
-<span class="c1"># Always print diff when running ( same as always running with -D/--diff )</span>
-<span class="c1">#always = False</span>
-
-<span class="c1"># Set how many context lines to show in diff</span>
-<span class="c1">#context = 3</span>
-
-<span class="p">[</span><span class="n">galaxy</span><span class="p">]</span>
-<span class="c1"># Controls whether the display wheel is shown or not</span>
-<span class="c1">#display_progress=</span>
-
-<span class="c1"># Validate TLS certificates for Galaxy server</span>
-<span class="c1">#ignore_certs = False</span>
-
-<span class="c1"># Role or collection skeleton directory to use as a template for</span>
-<span class="c1"># the init action in ansible-galaxy command</span>
-<span class="c1">#role_skeleton=</span>
-
-<span class="c1"># Patterns of files to ignore inside a Galaxy role or collection</span>
-<span class="c1"># skeleton directory</span>
-<span class="c1">#role_skeleton_ignore=&quot;^.git$&quot;, &quot;^.*/.git_keep$&quot;</span>
-
-<span class="c1"># Galaxy Server URL</span>
-<span class="c1">#server=https://galaxy.ansible.com</span>
-
-<span class="c1"># A list of Galaxy servers to use when installing a collection.</span>
-<span class="c1">#server_list=automation_hub, release_galaxy</span>
-
-<span class="c1"># Server specific details which are mentioned in server_list</span>
-<span class="c1">#[galaxy_server.automation_hub]</span>
-<span class="c1">#url=https://cloud.redhat.com/api/automation-hub/</span>
-<span class="c1">#auth_url=https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token</span>
-<span class="c1">#token=my_ah_token</span>
-<span class="c1">#</span>
-<span class="c1">#[galaxy_server.release_galaxy]</span>
-<span class="c1">#url=https://galaxy.ansible.com/</span>
-<span class="c1">#token=my_token</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1"># Example config file for ansible -- https://ansible.com/</span>
+<span class="linenos">  2</span><span class="c1"># =======================================================</span>
+<span class="linenos">  3</span>
+<span class="linenos">  4</span><span class="c1"># Nearly all parameters can be overridden in ansible-playbook</span>
+<span class="linenos">  5</span><span class="c1"># or with command line flags. Ansible will read ANSIBLE_CONFIG,</span>
+<span class="linenos">  6</span><span class="c1"># ansible.cfg in the current working directory, .ansible.cfg in</span>
+<span class="linenos">  7</span><span class="c1"># the home directory, or /etc/ansible/ansible.cfg, whichever it</span>
+<span class="linenos">  8</span><span class="c1"># finds first</span>
+<span class="linenos">  9</span>
+<span class="linenos"> 10</span><span class="c1"># For a full list of available options, run ansible-config list or see the</span>
+<span class="linenos"> 11</span><span class="c1"># documentation: https://docs.ansible.com/ansible/latest/reference_appendices/config.html.</span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span><span class="p">[</span><span class="n">defaults</span><span class="p">]</span>
+<span class="linenos"> 14</span><span class="c1">#inventory       = /etc/ansible/hosts</span>
+<span class="linenos"> 15</span><span class="c1">#library         = ~/.ansible/plugins/modules:/usr/share/ansible/plugins/modules</span>
+<span class="linenos"> 16</span><span class="c1">#module_utils    = ~/.ansible/plugins/module_utils:/usr/share/ansible/plugins/module_utils</span>
+<span class="linenos"> 17</span><span class="c1">#remote_tmp      = ~/.ansible/tmp</span>
+<span class="linenos"> 18</span><span class="c1">#local_tmp       = ~/.ansible/tmp</span>
+<span class="linenos"> 19</span><span class="c1">#forks           = 5</span>
+<span class="linenos"> 20</span><span class="c1">#poll_interval   = 0.001</span>
+<span class="linenos"> 21</span><span class="c1">#ask_pass        = False</span>
+<span class="linenos"> 22</span><span class="c1">#transport       = smart</span>
+<span class="linenos"> 23</span>
+<span class="linenos"> 24</span><span class="c1"># Plays will gather facts by default, which contain information about</span>
+<span class="linenos"> 25</span><span class="c1"># the remote system.</span>
+<span class="linenos"> 26</span><span class="c1">#</span>
+<span class="linenos"> 27</span><span class="c1"># smart - gather by default, but don&#39;t regather if already gathered</span>
+<span class="linenos"> 28</span><span class="c1"># implicit - gather by default, turn off with gather_facts: False</span>
+<span class="linenos"> 29</span><span class="c1"># explicit - do not gather by default, must say gather_facts: True</span>
+<span class="linenos"> 30</span><span class="c1">#gathering = implicit</span>
+<span class="linenos"> 31</span>
+<span class="linenos"> 32</span><span class="c1"># This only affects the gathering done by a play&#39;s gather_facts directive,</span>
+<span class="linenos"> 33</span><span class="c1"># by default gathering retrieves all facts subsets</span>
+<span class="linenos"> 34</span><span class="c1"># all - gather all subsets</span>
+<span class="linenos"> 35</span><span class="c1"># network - gather min and network facts</span>
+<span class="linenos"> 36</span><span class="c1"># hardware - gather hardware facts (longest facts to retrieve)</span>
+<span class="linenos"> 37</span><span class="c1"># virtual - gather min and virtual facts</span>
+<span class="linenos"> 38</span><span class="c1"># facter - import facts from facter</span>
+<span class="linenos"> 39</span><span class="c1"># ohai - import facts from ohai</span>
+<span class="linenos"> 40</span><span class="c1"># You can combine them using comma (ex: network,virtual)</span>
+<span class="linenos"> 41</span><span class="c1"># You can negate them using ! (ex: !hardware,!facter,!ohai)</span>
+<span class="linenos"> 42</span><span class="c1"># A minimal set of facts is always gathered.</span>
+<span class="linenos"> 43</span><span class="c1">#</span>
+<span class="linenos"> 44</span><span class="c1">#gather_subset = all</span>
+<span class="linenos"> 45</span>
+<span class="linenos"> 46</span><span class="c1"># some hardware related facts are collected</span>
+<span class="linenos"> 47</span><span class="c1"># with a maximum timeout of 10 seconds. This</span>
+<span class="linenos"> 48</span><span class="c1"># option lets you increase or decrease that</span>
+<span class="linenos"> 49</span><span class="c1"># timeout to something more suitable for the</span>
+<span class="linenos"> 50</span><span class="c1"># environment.</span>
+<span class="linenos"> 51</span><span class="c1">#</span>
+<span class="linenos"> 52</span><span class="c1">#gather_timeout = 10</span>
+<span class="linenos"> 53</span>
+<span class="linenos"> 54</span><span class="c1"># Ansible facts are available inside the ansible_facts.* dictionary</span>
+<span class="linenos"> 55</span><span class="c1"># namespace. This setting maintains the behaviour which was the default prior</span>
+<span class="linenos"> 56</span><span class="c1"># to 2.5, duplicating these variables into the main namespace, each with a</span>
+<span class="linenos"> 57</span><span class="c1"># prefix of &#39;ansible_&#39;.</span>
+<span class="linenos"> 58</span><span class="c1"># This variable is set to True by default for backwards compatibility. It</span>
+<span class="linenos"> 59</span><span class="c1"># will be changed to a default of &#39;False&#39; in a future release.</span>
+<span class="linenos"> 60</span><span class="c1">#</span>
+<span class="linenos"> 61</span><span class="c1">#inject_facts_as_vars = True</span>
+<span class="linenos"> 62</span>
+<span class="linenos"> 63</span><span class="c1"># Paths to search for collections, colon separated</span>
+<span class="linenos"> 64</span><span class="c1"># collections_paths = ~/.ansible/collections:/usr/share/ansible/collections</span>
+<span class="linenos"> 65</span>
+<span class="linenos"> 66</span><span class="c1"># Paths to search for roles, colon separated</span>
+<span class="linenos"> 67</span><span class="c1">#roles_path = ~/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles</span>
+<span class="linenos"> 68</span>
+<span class="linenos"> 69</span><span class="c1"># Host key checking is enabled by default</span>
+<span class="linenos"> 70</span><span class="c1">#host_key_checking = True</span>
+<span class="linenos"> 71</span>
+<span class="linenos"> 72</span><span class="c1"># You can only have one &#39;stdout&#39; callback type enabled at a time. The default</span>
+<span class="linenos"> 73</span><span class="c1"># is &#39;default&#39;. The &#39;yaml&#39; or &#39;debug&#39; stdout callback plugins are easier to read.</span>
+<span class="linenos"> 74</span><span class="c1">#</span>
+<span class="linenos"> 75</span><span class="c1">#stdout_callback = default</span>
+<span class="linenos"> 76</span><span class="c1">#stdout_callback = yaml</span>
+<span class="linenos"> 77</span><span class="c1">#stdout_callback = debug</span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span>
+<span class="linenos"> 80</span><span class="c1"># Ansible ships with some plugins that require enabling</span>
+<span class="linenos"> 81</span><span class="c1"># this is done to avoid running all of a type by default.</span>
+<span class="linenos"> 82</span><span class="c1"># These setting lists those that you want enabled for your system.</span>
+<span class="linenos"> 83</span><span class="c1"># Custom plugins should not need this unless plugin author disables them</span>
+<span class="linenos"> 84</span><span class="c1"># by default.</span>
+<span class="linenos"> 85</span><span class="c1">#</span>
+<span class="linenos"> 86</span><span class="c1"># Enable callback plugins, they can output to stdout but cannot be &#39;stdout&#39; type.</span>
+<span class="linenos"> 87</span><span class="c1">#callbacks_enabled = timer, mail</span>
+<span class="linenos"> 88</span>
+<span class="linenos"> 89</span><span class="c1"># Determine whether includes in tasks and handlers are &quot;static&quot; by</span>
+<span class="linenos"> 90</span><span class="c1"># default. As of 2.0, includes are dynamic by default. Setting these</span>
+<span class="linenos"> 91</span><span class="c1"># values to True will make includes behave more like they did in the</span>
+<span class="linenos"> 92</span><span class="c1"># 1.x versions.</span>
+<span class="linenos"> 93</span><span class="c1">#</span>
+<span class="linenos"> 94</span><span class="c1">#task_includes_static = False</span>
+<span class="linenos"> 95</span><span class="c1">#handler_includes_static = False</span>
+<span class="linenos"> 96</span>
+<span class="linenos"> 97</span><span class="c1"># Controls if a missing handler for a notification event is an error or a warning</span>
+<span class="linenos"> 98</span><span class="c1">#error_on_missing_handler = True</span>
+<span class="linenos"> 99</span>
+<span class="linenos">100</span><span class="c1"># Default timeout for connection plugins</span>
+<span class="linenos">101</span><span class="c1">#timeout = 10</span>
+<span class="linenos">102</span>
+<span class="linenos">103</span><span class="c1"># Default user to use for playbooks if user is not specified</span>
+<span class="linenos">104</span><span class="c1"># Uses the connection plugin&#39;s default, normally the user currently executing Ansible,</span>
+<span class="linenos">105</span><span class="c1"># unless a different user is specified here.</span>
+<span class="linenos">106</span><span class="c1">#</span>
+<span class="linenos">107</span><span class="c1">#remote_user = root</span>
+<span class="linenos">108</span>
+<span class="linenos">109</span><span class="c1"># Logging is off by default unless this path is defined.</span>
+<span class="linenos">110</span><span class="c1">#log_path = /var/log/ansible.log</span>
+<span class="linenos">111</span>
+<span class="linenos">112</span><span class="c1"># Default module to use when running ad-hoc commands</span>
+<span class="linenos">113</span><span class="c1">#module_name = command</span>
+<span class="linenos">114</span>
+<span class="linenos">115</span><span class="c1"># Use this shell for commands executed under sudo.</span>
+<span class="linenos">116</span><span class="c1"># you may need to change this to /bin/bash in rare instances</span>
+<span class="linenos">117</span><span class="c1"># if sudo is constrained.</span>
+<span class="linenos">118</span><span class="c1">#</span>
+<span class="linenos">119</span><span class="c1">#executable = /bin/sh</span>
+<span class="linenos">120</span>
+<span class="linenos">121</span><span class="c1"># By default, variables from roles will be visible in the global variable</span>
+<span class="linenos">122</span><span class="c1"># scope. To prevent this, set the following option to True, and only</span>
+<span class="linenos">123</span><span class="c1"># tasks and handlers within the role will see the variables there</span>
+<span class="linenos">124</span><span class="c1">#</span>
+<span class="linenos">125</span><span class="c1">#private_role_vars = False</span>
+<span class="linenos">126</span>
+<span class="linenos">127</span><span class="c1"># List any Jinja2 extensions to enable here.</span>
+<span class="linenos">128</span><span class="c1">#jinja2_extensions = jinja2.ext.do,jinja2.ext.i18n</span>
+<span class="linenos">129</span>
+<span class="linenos">130</span><span class="c1"># If set, always use this private key file for authentication, same as</span>
+<span class="linenos">131</span><span class="c1"># if passing --private-key to ansible or ansible-playbook</span>
+<span class="linenos">132</span><span class="c1">#</span>
+<span class="linenos">133</span><span class="c1">#private_key_file = /path/to/file</span>
+<span class="linenos">134</span>
+<span class="linenos">135</span><span class="c1"># If set, configures the path to the Vault password file as an alternative to</span>
+<span class="linenos">136</span><span class="c1"># specifying --vault-password-file on the command line. This can also be</span>
+<span class="linenos">137</span><span class="c1"># an executable script that returns the vault password to stdout.</span>
+<span class="linenos">138</span><span class="c1">#</span>
+<span class="linenos">139</span><span class="c1">#vault_password_file = /path/to/vault_password_file</span>
+<span class="linenos">140</span>
+<span class="linenos">141</span><span class="c1"># Format of string {{ ansible_managed }} available within Jinja2</span>
+<span class="linenos">142</span><span class="c1"># templates indicates to users editing templates files will be replaced.</span>
+<span class="linenos">143</span><span class="c1"># replacing {file}, {host} and {uid} and strftime codes with proper values.</span>
+<span class="linenos">144</span><span class="c1">#</span>
+<span class="linenos">145</span><span class="c1">#ansible_managed = Ansible managed: {file} modified on %Y-%m-%d %H:%M:%S by {uid} on {host}</span>
+<span class="linenos">146</span>
+<span class="linenos">147</span><span class="c1"># {file}, {host}, {uid}, and the timestamp can all interfere with idempotence</span>
+<span class="linenos">148</span><span class="c1"># in some situations so the default is a static string:</span>
+<span class="linenos">149</span><span class="c1">#</span>
+<span class="linenos">150</span><span class="c1">#ansible_managed = Ansible managed</span>
+<span class="linenos">151</span>
+<span class="linenos">152</span><span class="c1"># By default, ansible-playbook will display &quot;Skipping [host]&quot; if it determines a task</span>
+<span class="linenos">153</span><span class="c1"># should not be run on a host. Set this to &quot;False&quot; if you don&#39;t want to see these &quot;Skipping&quot;</span>
+<span class="linenos">154</span><span class="c1"># messages. NOTE: the task header will still be shown regardless of whether or not the</span>
+<span class="linenos">155</span><span class="c1"># task is skipped.</span>
+<span class="linenos">156</span><span class="c1">#</span>
+<span class="linenos">157</span><span class="c1">#display_skipped_hosts = True</span>
+<span class="linenos">158</span>
+<span class="linenos">159</span><span class="c1"># By default, if a task in a playbook does not include a name: field then</span>
+<span class="linenos">160</span><span class="c1"># ansible-playbook will construct a header that includes the task&#39;s action but</span>
+<span class="linenos">161</span><span class="c1"># not the task&#39;s args. This is a security feature because ansible cannot know</span>
+<span class="linenos">162</span><span class="c1"># if the *module* considers an argument to be no_log at the time that the</span>
+<span class="linenos">163</span><span class="c1"># header is printed. If your environment doesn&#39;t have a problem securing</span>
+<span class="linenos">164</span><span class="c1"># stdout from ansible-playbook (or you have manually specified no_log in your</span>
+<span class="linenos">165</span><span class="c1"># playbook on all of the tasks where you have secret information) then you can</span>
+<span class="linenos">166</span><span class="c1"># safely set this to True to get more informative messages.</span>
+<span class="linenos">167</span><span class="c1">#</span>
+<span class="linenos">168</span><span class="c1">#display_args_to_stdout = False</span>
+<span class="linenos">169</span>
+<span class="linenos">170</span><span class="c1"># Ansible will raise errors when attempting to dereference</span>
+<span class="linenos">171</span><span class="c1"># Jinja2 variables that are not set in templates or action lines. Uncomment this line</span>
+<span class="linenos">172</span><span class="c1"># to change this behavior.</span>
+<span class="linenos">173</span><span class="c1">#</span>
+<span class="linenos">174</span><span class="c1">#error_on_undefined_vars = False</span>
+<span class="linenos">175</span>
+<span class="linenos">176</span><span class="c1"># Ansible may display warnings based on the configuration of the</span>
+<span class="linenos">177</span><span class="c1"># system running ansible itself. This may include warnings about 3rd party packages or</span>
+<span class="linenos">178</span><span class="c1"># other conditions that should be resolved if possible.</span>
+<span class="linenos">179</span><span class="c1"># To disable these warnings, set the following value to False:</span>
+<span class="linenos">180</span><span class="c1">#</span>
+<span class="linenos">181</span><span class="c1">#system_warnings = True</span>
+<span class="linenos">182</span>
+<span class="linenos">183</span><span class="c1"># Ansible may display deprecation warnings for language</span>
+<span class="linenos">184</span><span class="c1"># features that should no longer be used and will be removed in future versions.</span>
+<span class="linenos">185</span><span class="c1"># To disable these warnings, set the following value to False:</span>
+<span class="linenos">186</span><span class="c1">#</span>
+<span class="linenos">187</span><span class="c1">#deprecation_warnings = True</span>
+<span class="linenos">188</span>
+<span class="linenos">189</span><span class="c1"># Ansible can optionally warn when usage of the shell and</span>
+<span class="linenos">190</span><span class="c1"># command module appear to be simplified by using a default Ansible module</span>
+<span class="linenos">191</span><span class="c1"># instead. These warnings can be silenced by adjusting the following</span>
+<span class="linenos">192</span><span class="c1"># setting or adding warn=yes or warn=no to the end of the command line</span>
+<span class="linenos">193</span><span class="c1"># parameter string. This will for example suggest using the git module</span>
+<span class="linenos">194</span><span class="c1"># instead of shelling out to the git command.</span>
+<span class="linenos">195</span><span class="c1">#</span>
+<span class="linenos">196</span><span class="c1">#command_warnings = False</span>
+<span class="linenos">197</span>
+<span class="linenos">198</span>
+<span class="linenos">199</span><span class="c1"># set plugin path directories here, separate with colons</span>
+<span class="linenos">200</span><span class="c1">#action_plugins     = /usr/share/ansible/plugins/action</span>
+<span class="linenos">201</span><span class="c1">#become_plugins     = /usr/share/ansible/plugins/become</span>
+<span class="linenos">202</span><span class="c1">#cache_plugins      = /usr/share/ansible/plugins/cache</span>
+<span class="linenos">203</span><span class="c1">#callback_plugins   = /usr/share/ansible/plugins/callback</span>
+<span class="linenos">204</span><span class="c1">#connection_plugins = /usr/share/ansible/plugins/connection</span>
+<span class="linenos">205</span><span class="c1">#lookup_plugins     = /usr/share/ansible/plugins/lookup</span>
+<span class="linenos">206</span><span class="c1">#inventory_plugins  = /usr/share/ansible/plugins/inventory</span>
+<span class="linenos">207</span><span class="c1">#vars_plugins       = /usr/share/ansible/plugins/vars</span>
+<span class="linenos">208</span><span class="c1">#filter_plugins     = /usr/share/ansible/plugins/filter</span>
+<span class="linenos">209</span><span class="c1">#test_plugins       = /usr/share/ansible/plugins/test</span>
+<span class="linenos">210</span><span class="c1">#terminal_plugins   = /usr/share/ansible/plugins/terminal</span>
+<span class="linenos">211</span><span class="c1">#strategy_plugins   = /usr/share/ansible/plugins/strategy</span>
+<span class="linenos">212</span>
+<span class="linenos">213</span>
+<span class="linenos">214</span><span class="c1"># Ansible will use the &#39;linear&#39; strategy but you may want to try another one.</span>
+<span class="linenos">215</span><span class="c1">#strategy = linear</span>
+<span class="linenos">216</span>
+<span class="linenos">217</span><span class="c1"># By default, callbacks are not loaded for /bin/ansible. Enable this if you</span>
+<span class="linenos">218</span><span class="c1"># want, for example, a notification or logging callback to also apply to</span>
+<span class="linenos">219</span><span class="c1"># /bin/ansible runs</span>
+<span class="linenos">220</span><span class="c1">#</span>
+<span class="linenos">221</span><span class="c1">#bin_ansible_callbacks = False</span>
+<span class="linenos">222</span>
+<span class="linenos">223</span>
+<span class="linenos">224</span><span class="c1"># Don&#39;t like cows?  that&#39;s unfortunate.</span>
+<span class="linenos">225</span><span class="c1"># set to 1 if you don&#39;t want cowsay support or export ANSIBLE_NOCOWS=1</span>
+<span class="linenos">226</span><span class="c1">#nocows = 1</span>
+<span class="linenos">227</span>
+<span class="linenos">228</span><span class="c1"># Set which cowsay stencil you&#39;d like to use by default. When set to &#39;random&#39;,</span>
+<span class="linenos">229</span><span class="c1"># a random stencil will be selected for each task. The selection will be filtered</span>
+<span class="linenos">230</span><span class="c1"># against the `cow_enabled` option below.</span>
+<span class="linenos">231</span><span class="c1">#</span>
+<span class="linenos">232</span><span class="c1">#cow_selection = default</span>
+<span class="linenos">233</span><span class="c1">#cow_selection = random</span>
+<span class="linenos">234</span>
+<span class="linenos">235</span><span class="c1"># When using the &#39;random&#39; option for cowsay, stencils will be restricted to this list.</span>
+<span class="linenos">236</span><span class="c1"># it should be formatted as a comma-separated list with no spaces between names.</span>
+<span class="linenos">237</span><span class="c1"># NOTE: line continuations here are for formatting purposes only, as the INI parser</span>
+<span class="linenos">238</span><span class="c1">#       in python does not support them.</span>
+<span class="linenos">239</span><span class="c1">#</span>
+<span class="linenos">240</span><span class="c1">#cowsay_enabled_stencils=bud-frogs,bunny,cheese,daemon,default,dragon,elephant-in-snake,elephant,eyes,\</span>
+<span class="linenos">241</span><span class="c1">#              hellokitty,kitty,luke-koala,meow,milk,moofasa,moose,ren,sheep,small,stegosaurus,\</span>
+<span class="linenos">242</span><span class="c1">#              stimpy,supermilker,three-eyes,turkey,turtle,tux,udder,vader-koala,vader,www</span>
+<span class="linenos">243</span>
+<span class="linenos">244</span><span class="c1"># Don&#39;t like colors either?</span>
+<span class="linenos">245</span><span class="c1"># set to 1 if you don&#39;t want colors, or export ANSIBLE_NOCOLOR=1</span>
+<span class="linenos">246</span><span class="c1">#</span>
+<span class="linenos">247</span><span class="c1">#nocolor = 1</span>
+<span class="linenos">248</span>
+<span class="linenos">249</span><span class="c1"># If set to a persistent type (not &#39;memory&#39;, for example &#39;redis&#39;) fact values</span>
+<span class="linenos">250</span><span class="c1"># from previous runs in Ansible will be stored. This may be useful when</span>
+<span class="linenos">251</span><span class="c1"># wanting to use, for example, IP information from one group of servers</span>
+<span class="linenos">252</span><span class="c1"># without having to talk to them in the same playbook run to get their</span>
+<span class="linenos">253</span><span class="c1"># current IP information.</span>
+<span class="linenos">254</span><span class="c1">#</span>
+<span class="linenos">255</span><span class="c1">#fact_caching = memory</span>
+<span class="linenos">256</span>
+<span class="linenos">257</span><span class="c1"># This option tells Ansible where to cache facts. The value is plugin dependent.</span>
+<span class="linenos">258</span><span class="c1"># For the jsonfile plugin, it should be a path to a local directory.</span>
+<span class="linenos">259</span><span class="c1"># For the redis plugin, the value is a host:port:database triplet: fact_caching_connection = localhost:6379:0</span>
+<span class="linenos">260</span><span class="c1">#</span>
+<span class="linenos">261</span><span class="c1">#fact_caching_connection=/tmp</span>
+<span class="linenos">262</span>
+<span class="linenos">263</span><span class="c1"># retry files</span>
+<span class="linenos">264</span><span class="c1"># When a playbook fails a .retry file can be created that will be placed in ~/</span>
+<span class="linenos">265</span><span class="c1"># You can enable this feature by setting retry_files_enabled to True</span>
+<span class="linenos">266</span><span class="c1"># and you can change the location of the files by setting retry_files_save_path</span>
+<span class="linenos">267</span><span class="c1">#</span>
+<span class="linenos">268</span><span class="c1">#retry_files_enabled = False</span>
+<span class="linenos">269</span><span class="c1">#retry_files_save_path = ~/.ansible-retry</span>
+<span class="linenos">270</span>
+<span class="linenos">271</span><span class="c1"># prevents logging of task data, off by default</span>
+<span class="linenos">272</span><span class="c1">#no_log = False</span>
+<span class="linenos">273</span>
+<span class="linenos">274</span><span class="c1"># prevents logging of tasks, but only on the targets, data is still logged on the master/controller</span>
+<span class="linenos">275</span><span class="c1">#no_target_syslog = False</span>
+<span class="linenos">276</span>
+<span class="linenos">277</span><span class="c1"># Controls whether Ansible will raise an error or warning if a task has no</span>
+<span class="linenos">278</span><span class="c1"># choice but to create world readable temporary files to execute a module on</span>
+<span class="linenos">279</span><span class="c1"># the remote machine. This option is False by default for security. Users may</span>
+<span class="linenos">280</span><span class="c1"># turn this on to have behaviour more like Ansible prior to 2.1.x. See</span>
+<span class="linenos">281</span><span class="c1"># https://docs.ansible.com/ansible/latest/user_guide/become.html#risks-of-becoming-an-unprivileged-user</span>
+<span class="linenos">282</span><span class="c1"># for more secure ways to fix this than enabling this option.</span>
+<span class="linenos">283</span><span class="c1">#</span>
+<span class="linenos">284</span><span class="c1">#allow_world_readable_tmpfiles = False</span>
+<span class="linenos">285</span>
+<span class="linenos">286</span><span class="c1"># Controls what compression method is used for new-style ansible modules when</span>
+<span class="linenos">287</span><span class="c1"># they are sent to the remote system. The compression types depend on having</span>
+<span class="linenos">288</span><span class="c1"># support compiled into both the controller&#39;s python and the client&#39;s python.</span>
+<span class="linenos">289</span><span class="c1"># The names should match with the python Zipfile compression types:</span>
+<span class="linenos">290</span><span class="c1"># * ZIP_STORED (no compression. available everywhere)</span>
+<span class="linenos">291</span><span class="c1"># * ZIP_DEFLATED (uses zlib, the default)</span>
+<span class="linenos">292</span><span class="c1"># These values may be set per host via the ansible_module_compression inventory variable.</span>
+<span class="linenos">293</span><span class="c1">#</span>
+<span class="linenos">294</span><span class="c1">#module_compression = &#39;ZIP_DEFLATED&#39;</span>
+<span class="linenos">295</span>
+<span class="linenos">296</span><span class="c1"># This controls the cutoff point (in bytes) on --diff for files</span>
+<span class="linenos">297</span><span class="c1"># set to 0 for unlimited (RAM may suffer!).</span>
+<span class="linenos">298</span><span class="c1">#</span>
+<span class="linenos">299</span><span class="c1">#max_diff_size = 104448</span>
+<span class="linenos">300</span>
+<span class="linenos">301</span><span class="c1"># Controls showing custom stats at the end, off by default</span>
+<span class="linenos">302</span><span class="c1">#show_custom_stats = False</span>
+<span class="linenos">303</span>
+<span class="linenos">304</span><span class="c1"># Controls which files to ignore when using a directory as inventory with</span>
+<span class="linenos">305</span><span class="c1"># possibly multiple sources (both static and dynamic)</span>
+<span class="linenos">306</span><span class="c1">#</span>
+<span class="linenos">307</span><span class="c1">#inventory_ignore_extensions = ~, .orig, .bak, .ini, .cfg, .retry, .pyc, .pyo</span>
+<span class="linenos">308</span>
+<span class="linenos">309</span><span class="c1"># This family of modules use an alternative execution path optimized for network appliances</span>
+<span class="linenos">310</span><span class="c1"># only update this setting if you know how this works, otherwise it can break module execution</span>
+<span class="linenos">311</span><span class="c1">#</span>
+<span class="linenos">312</span><span class="c1">#network_group_modules=eos, nxos, ios, iosxr, junos, vyos</span>
+<span class="linenos">313</span>
+<span class="linenos">314</span><span class="c1"># When enabled, this option allows lookups (via variables like {{lookup(&#39;foo&#39;)}} or when used as</span>
+<span class="linenos">315</span><span class="c1"># a loop with `with_foo`) to return data that is not marked &quot;unsafe&quot;. This means the data may contain</span>
+<span class="linenos">316</span><span class="c1"># jinja2 templating language which will be run through the templating engine.</span>
+<span class="linenos">317</span><span class="c1"># ENABLING THIS COULD BE A SECURITY RISK</span>
+<span class="linenos">318</span><span class="c1">#</span>
+<span class="linenos">319</span><span class="c1">#allow_unsafe_lookups = False</span>
+<span class="linenos">320</span>
+<span class="linenos">321</span><span class="c1"># set default errors for all plays</span>
+<span class="linenos">322</span><span class="c1">#any_errors_fatal = False</span>
+<span class="linenos">323</span>
+<span class="linenos">324</span>
+<span class="linenos">325</span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span>
+<span class="linenos">326</span><span class="c1"># List of enabled inventory plugins and the order in which they are used.</span>
+<span class="linenos">327</span><span class="c1">#enable_plugins = host_list, script, auto, yaml, ini, toml</span>
+<span class="linenos">328</span>
+<span class="linenos">329</span><span class="c1"># Ignore these extensions when parsing a directory as inventory source</span>
+<span class="linenos">330</span><span class="c1">#ignore_extensions = .pyc, .pyo, .swp, .bak, ~, .rpm, .md, .txt, ~, .orig, .ini, .cfg, .retry</span>
+<span class="linenos">331</span>
+<span class="linenos">332</span><span class="c1"># ignore files matching these patterns when parsing a directory as inventory source</span>
+<span class="linenos">333</span><span class="c1">#ignore_patterns=</span>
+<span class="linenos">334</span>
+<span class="linenos">335</span><span class="c1"># If &#39;True&#39; unparsed inventory sources become fatal errors, otherwise they are warnings.</span>
+<span class="linenos">336</span><span class="c1">#unparsed_is_failed = False</span>
+<span class="linenos">337</span>
+<span class="linenos">338</span>
+<span class="linenos">339</span><span class="p">[</span><span class="n">privilege_escalation</span><span class="p">]</span>
+<span class="linenos">340</span><span class="c1">#become = False</span>
+<span class="linenos">341</span><span class="c1">#become_method = sudo</span>
+<span class="linenos">342</span><span class="c1">#become_ask_pass = False</span>
+<span class="linenos">343</span>
+<span class="linenos">344</span>
+<span class="linenos">345</span><span class="c1">## Connection Plugins ##</span>
+<span class="linenos">346</span>
+<span class="linenos">347</span><span class="c1"># Settings for each connection plugin go under a section titled &#39;[[plugin_name]_connection]&#39;</span>
+<span class="linenos">348</span><span class="c1"># To view available connection plugins, run ansible-doc -t connection -l</span>
+<span class="linenos">349</span><span class="c1"># To view available options for a connection plugin, run ansible-doc -t connection [plugin_name]</span>
+<span class="linenos">350</span><span class="c1"># https://docs.ansible.com/ansible/latest/plugins/connection.html</span>
+<span class="linenos">351</span>
+<span class="linenos">352</span><span class="p">[</span><span class="n">paramiko_connection</span><span class="p">]</span>
+<span class="linenos">353</span><span class="c1"># uncomment this line to cause the paramiko connection plugin to not record new host</span>
+<span class="linenos">354</span><span class="c1"># keys encountered. Increases performance on new host additions. Setting works independently of the</span>
+<span class="linenos">355</span><span class="c1"># host key checking setting above.</span>
+<span class="linenos">356</span><span class="c1">#record_host_keys=False</span>
+<span class="linenos">357</span>
+<span class="linenos">358</span><span class="c1"># by default, Ansible requests a pseudo-terminal for commands executed under sudo. Uncomment this</span>
+<span class="linenos">359</span><span class="c1"># line to disable this behaviour.</span>
+<span class="linenos">360</span><span class="c1">#pty = False</span>
+<span class="linenos">361</span>
+<span class="linenos">362</span><span class="c1"># paramiko will default to looking for SSH keys initially when trying to</span>
+<span class="linenos">363</span><span class="c1"># authenticate to remote devices. This is a problem for some network devices</span>
+<span class="linenos">364</span><span class="c1"># that close the connection after a key failure. Uncomment this line to</span>
+<span class="linenos">365</span><span class="c1"># disable the Paramiko look for keys function</span>
+<span class="linenos">366</span><span class="c1">#look_for_keys = False</span>
+<span class="linenos">367</span>
+<span class="linenos">368</span><span class="c1"># When using persistent connections with Paramiko, the connection runs in a</span>
+<span class="linenos">369</span><span class="c1"># background process. If the host doesn&#39;t already have a valid SSH key, by</span>
+<span class="linenos">370</span><span class="c1"># default Ansible will prompt to add the host key. This will cause connections</span>
+<span class="linenos">371</span><span class="c1"># running in background processes to fail. Uncomment this line to have</span>
+<span class="linenos">372</span><span class="c1"># Paramiko automatically add host keys.</span>
+<span class="linenos">373</span><span class="c1">#host_key_auto_add = True</span>
+<span class="linenos">374</span>
+<span class="linenos">375</span>
+<span class="linenos">376</span><span class="p">[</span><span class="n">ssh_connection</span><span class="p">]</span>
+<span class="linenos">377</span><span class="c1"># ssh arguments to use</span>
+<span class="linenos">378</span><span class="c1"># Leaving off ControlPersist will result in poor performance, so use</span>
+<span class="linenos">379</span><span class="c1"># paramiko on older platforms rather than removing it, -C controls compression use</span>
+<span class="linenos">380</span><span class="c1">#ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s</span>
+<span class="linenos">381</span>
+<span class="linenos">382</span><span class="c1"># The base directory for the ControlPath sockets.</span>
+<span class="linenos">383</span><span class="c1"># This is the &quot;%(directory)s&quot; in the control_path option</span>
+<span class="linenos">384</span><span class="c1">#</span>
+<span class="linenos">385</span><span class="c1"># Example:</span>
+<span class="linenos">386</span><span class="c1"># control_path_dir = /tmp/.ansible/cp</span>
+<span class="linenos">387</span><span class="c1">#control_path_dir = ~/.ansible/cp</span>
+<span class="linenos">388</span>
+<span class="linenos">389</span><span class="c1"># The path to use for the ControlPath sockets. This defaults to a hashed string of the hostname,</span>
+<span class="linenos">390</span><span class="c1"># port and username (empty string in the config). The hash mitigates a common problem users</span>
+<span class="linenos">391</span><span class="c1"># found with long hostnames and the conventional %(directory)s/ansible-ssh-%%h-%%p-%%r format.</span>
+<span class="linenos">392</span><span class="c1"># In those cases, a &quot;too long for Unix domain socket&quot; ssh error would occur.</span>
+<span class="linenos">393</span><span class="c1">#</span>
+<span class="linenos">394</span><span class="c1"># Example:</span>
+<span class="linenos">395</span><span class="c1"># control_path = %(directory)s/%%C</span>
+<span class="linenos">396</span><span class="c1">#control_path =</span>
+<span class="linenos">397</span>
+<span class="linenos">398</span><span class="c1"># Enabling pipelining reduces the number of SSH operations required to</span>
+<span class="linenos">399</span><span class="c1"># execute a module on the remote server. This can result in a significant</span>
+<span class="linenos">400</span><span class="c1"># performance improvement when enabled, however when using &quot;sudo:&quot; you must</span>
+<span class="linenos">401</span><span class="c1"># first disable &#39;requiretty&#39; in /etc/sudoers</span>
+<span class="linenos">402</span><span class="c1">#</span>
+<span class="linenos">403</span><span class="c1"># By default, this option is disabled to preserve compatibility with</span>
+<span class="linenos">404</span><span class="c1"># sudoers configurations that have requiretty (the default on many distros).</span>
+<span class="linenos">405</span><span class="c1">#</span>
+<span class="linenos">406</span><span class="c1">#pipelining = False</span>
+<span class="linenos">407</span>
+<span class="linenos">408</span><span class="c1"># Control the mechanism for transferring files (old)</span>
+<span class="linenos">409</span><span class="c1">#   * smart = try sftp and then try scp [default]</span>
+<span class="linenos">410</span><span class="c1">#   * True = use scp only</span>
+<span class="linenos">411</span><span class="c1">#   * False = use sftp only</span>
+<span class="linenos">412</span><span class="c1">#scp_if_ssh = smart</span>
+<span class="linenos">413</span>
+<span class="linenos">414</span><span class="c1"># Control the mechanism for transferring files (new)</span>
+<span class="linenos">415</span><span class="c1"># If set, this will override the scp_if_ssh option</span>
+<span class="linenos">416</span><span class="c1">#   * sftp  = use sftp to transfer files</span>
+<span class="linenos">417</span><span class="c1">#   * scp   = use scp to transfer files</span>
+<span class="linenos">418</span><span class="c1">#   * piped = use &#39;dd&#39; over SSH to transfer files</span>
+<span class="linenos">419</span><span class="c1">#   * smart = try sftp, scp, and piped, in that order [default]</span>
+<span class="linenos">420</span><span class="c1">#transfer_method = smart</span>
+<span class="linenos">421</span>
+<span class="linenos">422</span><span class="c1"># If False, sftp will not use batch mode to transfer files. This may cause some</span>
+<span class="linenos">423</span><span class="c1"># types of file transfer failures impossible to catch however, and should</span>
+<span class="linenos">424</span><span class="c1"># only be disabled if your sftp version has problems with batch mode</span>
+<span class="linenos">425</span><span class="c1">#sftp_batch_mode = False</span>
+<span class="linenos">426</span>
+<span class="linenos">427</span><span class="c1"># The -tt argument is passed to ssh when pipelining is not enabled because sudo</span>
+<span class="linenos">428</span><span class="c1"># requires a tty by default.</span>
+<span class="linenos">429</span><span class="c1">#usetty = True</span>
+<span class="linenos">430</span>
+<span class="linenos">431</span><span class="c1"># Number of times to retry an SSH connection to a host, in case of UNREACHABLE.</span>
+<span class="linenos">432</span><span class="c1"># For each retry attempt, there is an exponential backoff,</span>
+<span class="linenos">433</span><span class="c1"># so after the first attempt there is 1s wait, then 2s, 4s etc. up to 30s (max).</span>
+<span class="linenos">434</span><span class="c1">#retries = 3</span>
+<span class="linenos">435</span>
+<span class="linenos">436</span>
+<span class="linenos">437</span><span class="p">[</span><span class="n">persistent_connection</span><span class="p">]</span>
+<span class="linenos">438</span><span class="c1"># Configures the persistent connection timeout value in seconds. This value is</span>
+<span class="linenos">439</span><span class="c1"># how long the persistent connection will remain idle before it is destroyed.</span>
+<span class="linenos">440</span><span class="c1"># If the connection doesn&#39;t receive a request before the timeout value</span>
+<span class="linenos">441</span><span class="c1"># expires, the connection is shutdown. The default value is 30 seconds.</span>
+<span class="linenos">442</span><span class="c1">#connect_timeout = 30</span>
+<span class="linenos">443</span>
+<span class="linenos">444</span><span class="c1"># The command timeout value defines the amount of time to wait for a command</span>
+<span class="linenos">445</span><span class="c1"># or RPC call before timing out. The value for the command timeout must</span>
+<span class="linenos">446</span><span class="c1"># be less than the value of the persistent connection idle timeout (connect_timeout)</span>
+<span class="linenos">447</span><span class="c1"># The default value is 30 second.</span>
+<span class="linenos">448</span><span class="c1">#command_timeout = 30</span>
+<span class="linenos">449</span>
+<span class="linenos">450</span>
+<span class="linenos">451</span><span class="c1">## Become Plugins ##</span>
+<span class="linenos">452</span>
+<span class="linenos">453</span><span class="c1"># Settings for become plugins go under a section named &#39;[[plugin_name]_become_plugin]&#39;</span>
+<span class="linenos">454</span><span class="c1"># To view available become plugins, run ansible-doc -t become -l</span>
+<span class="linenos">455</span><span class="c1"># To view available options for a specific plugin, run ansible-doc -t become [plugin_name]</span>
+<span class="linenos">456</span><span class="c1"># https://docs.ansible.com/ansible/latest/plugins/become.html</span>
+<span class="linenos">457</span>
+<span class="linenos">458</span><span class="p">[</span><span class="n">sudo_become_plugin</span><span class="p">]</span>
+<span class="linenos">459</span><span class="c1">#flags = -H -S -n</span>
+<span class="linenos">460</span><span class="c1">#user = root</span>
+<span class="linenos">461</span>
+<span class="linenos">462</span>
+<span class="linenos">463</span><span class="p">[</span><span class="n">selinux</span><span class="p">]</span>
+<span class="linenos">464</span><span class="c1"># file systems that require special treatment when dealing with security context</span>
+<span class="linenos">465</span><span class="c1"># the default behaviour that copies the existing context or uses the user default</span>
+<span class="linenos">466</span><span class="c1"># needs to be changed to use the file system dependent context.</span>
+<span class="linenos">467</span><span class="c1">#special_context_filesystems=fuse,nfs,vboxsf,ramfs,9p,vfat</span>
+<span class="linenos">468</span>
+<span class="linenos">469</span><span class="c1"># Set this to True to allow libvirt_lxc connections to work without SELinux.</span>
+<span class="linenos">470</span><span class="c1">#libvirt_lxc_noseclabel = False</span>
+<span class="linenos">471</span>
+<span class="linenos">472</span>
+<span class="linenos">473</span><span class="p">[</span><span class="n">colors</span><span class="p">]</span>
+<span class="linenos">474</span><span class="c1">#highlight = white</span>
+<span class="linenos">475</span><span class="c1">#verbose = blue</span>
+<span class="linenos">476</span><span class="c1">#warn = bright purple</span>
+<span class="linenos">477</span><span class="c1">#error = red</span>
+<span class="linenos">478</span><span class="c1">#debug = dark gray</span>
+<span class="linenos">479</span><span class="c1">#deprecate = purple</span>
+<span class="linenos">480</span><span class="c1">#skip = cyan</span>
+<span class="linenos">481</span><span class="c1">#unreachable = red</span>
+<span class="linenos">482</span><span class="c1">#ok = green</span>
+<span class="linenos">483</span><span class="c1">#changed = yellow</span>
+<span class="linenos">484</span><span class="c1">#diff_add = green</span>
+<span class="linenos">485</span><span class="c1">#diff_remove = red</span>
+<span class="linenos">486</span><span class="c1">#diff_lines = cyan</span>
+<span class="linenos">487</span>
+<span class="linenos">488</span>
+<span class="linenos">489</span><span class="p">[</span><span class="n">diff</span><span class="p">]</span>
+<span class="linenos">490</span><span class="c1"># Always print diff when running ( same as always running with -D/--diff )</span>
+<span class="linenos">491</span><span class="c1">#always = False</span>
+<span class="linenos">492</span>
+<span class="linenos">493</span><span class="c1"># Set how many context lines to show in diff</span>
+<span class="linenos">494</span><span class="c1">#context = 3</span>
+<span class="linenos">495</span>
+<span class="linenos">496</span><span class="p">[</span><span class="n">galaxy</span><span class="p">]</span>
+<span class="linenos">497</span><span class="c1"># Controls whether the display wheel is shown or not</span>
+<span class="linenos">498</span><span class="c1">#display_progress=</span>
+<span class="linenos">499</span>
+<span class="linenos">500</span><span class="c1"># Validate TLS certificates for Galaxy server</span>
+<span class="linenos">501</span><span class="c1">#ignore_certs = False</span>
+<span class="linenos">502</span>
+<span class="linenos">503</span><span class="c1"># Role or collection skeleton directory to use as a template for</span>
+<span class="linenos">504</span><span class="c1"># the init action in ansible-galaxy command</span>
+<span class="linenos">505</span><span class="c1">#role_skeleton=</span>
+<span class="linenos">506</span>
+<span class="linenos">507</span><span class="c1"># Patterns of files to ignore inside a Galaxy role or collection</span>
+<span class="linenos">508</span><span class="c1"># skeleton directory</span>
+<span class="linenos">509</span><span class="c1">#role_skeleton_ignore=&quot;^.git$&quot;, &quot;^.*/.git_keep$&quot;</span>
+<span class="linenos">510</span>
+<span class="linenos">511</span><span class="c1"># Galaxy Server URL</span>
+<span class="linenos">512</span><span class="c1">#server=https://galaxy.ansible.com</span>
+<span class="linenos">513</span>
+<span class="linenos">514</span><span class="c1"># A list of Galaxy servers to use when installing a collection.</span>
+<span class="linenos">515</span><span class="c1">#server_list=automation_hub, release_galaxy</span>
+<span class="linenos">516</span>
+<span class="linenos">517</span><span class="c1"># Server specific details which are mentioned in server_list</span>
+<span class="linenos">518</span><span class="c1">#[galaxy_server.automation_hub]</span>
+<span class="linenos">519</span><span class="c1">#url=https://cloud.redhat.com/api/automation-hub/</span>
+<span class="linenos">520</span><span class="c1">#auth_url=https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token</span>
+<span class="linenos">521</span><span class="c1">#token=my_ah_token</span>
+<span class="linenos">522</span><span class="c1">#</span>
+<span class="linenos">523</span><span class="c1">#[galaxy_server.release_galaxy]</span>
+<span class="linenos">524</span><span class="c1">#url=https://galaxy.ansible.com/</span>
+<span class="linenos">525</span><span class="c1">#token=my_token</span>
 </pre></div>
 </div>
 </section>

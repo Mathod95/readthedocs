@@ -2,6 +2,7 @@ Configuration
 +++++++++++++
 
 .. code-block::
+    :linenos:
     
     # Example config file for ansible -- https://ansible.com/
     # =======================================================
