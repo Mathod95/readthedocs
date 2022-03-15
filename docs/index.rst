@@ -14,7 +14,7 @@ Welcome to Read the fucking docs !
    kubernetes/presentation
    kubernetes/installation
    kubernetes/configuration
-   kubernetes/collections
+   kubernetes/helm
 
 .. toctree::
    :maxdepth: 2
