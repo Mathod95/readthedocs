@@ -10,62 +10,30 @@ Welcome to Read the fucking docs !
    :maxdepth: 2
    :caption: Kubernetes
 
+   kubernetes/about
    kubernetes/introduction
-   kubernetes/presentation
    kubernetes/installation
-   kubernetes/configuration
-   kubernetes/helm
-
-.. toctree::
-   :maxdepth: 2
-   :caption: AWS
-
-   AWS/link
-
-.. toctree::
-   :maxdepth: 2
-   :caption: ELK Stack
-
-   ELK Stack/link
-
-.. toctree::
-   :maxdepth: 2
-   :caption: NGINX
-
-   NGINX/link
-
-.. toctree::
-   :maxdepth: 2
-   :caption: OpenSSH
-
-   OpenSSH/link
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Packer
-
-   Packer/link
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Proxmox
-
-   Proxmox/link
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Terraform
-
-   Terraform/link
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Vagrant
-
-   Vagrant/link
-
-.. toctree::
-   :maxdepth: 2
-   :caption: WireGuard
-
-   WireGuard/Installation
+   kubernetes/dashboard
+   kubernetes/automation
+   kubernetes/container_life_cycle
+   kubernetes/data_persistence
+   kubernetes/clustered_application_hosting
+   kubernetes/replication
+   kubernetes/internal_management_kubernetes
+   kubernetes/helm_package_manager
+   kubernetes/third_party_tools
+   kubernetes/kubernetes_managed_services
+   kubernetes/on_premise_kubernetes
+   kubernetes/application_exposure_wan
+   kubernetes/security_access_to_applications
+   kubernetes/network_policy
+   kubernetes/scalabily_automation
+   kubernetes/monitoring_prometheus
+   kubernetes/activity_log_centralized
+   kubernetes/istio
+   kubernetes/compilation_and_storage_docker_images
+   kubernetes/pipeline
+   kubernetes/access_management
+   kubernetes/kubernetes_operator
+   kubernetes/annexes
+   kubernetes/links
