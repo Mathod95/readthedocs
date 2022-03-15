@@ -1,5 +1,6 @@
 {
     "restructuredtext.confPath": "${workspaceFolder}/docs",
     "esbonio.server.enabled": true,
-    "esbonio.sphinx.confDir": "/home/mathod/Mathod95/readthedocs/docs"
+    "esbonio.sphinx.confDir": "/home/mathod/Mathod95/readthedocs/docs",
+    "restructuredtext.languageServer.disabled": true
 }

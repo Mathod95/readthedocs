@@ -8,13 +8,13 @@ Welcome to Read the fucking docs !
 
 .. toctree::
    :maxdepth: 2
-   :caption: Ansible
+   :caption: Kubernetes
 
-   Ansible/Introduction
-   Ansible/Presentation
-   Ansible/Installation
-   Ansible/Configuration
-   Ansible/Collections
+   kubernetes/introduction
+   kubernetes/presentation
+   kubernetes/installation
+   kubernetes/configuration
+   kubernetes/collections
 
 .. toctree::
    :maxdepth: 2
