@@ -12,37 +12,6 @@ systemctl status systemd-timesyncd.service
 
 
 
-#!/bin/bash
-# template-create.sh
-# Mathias Felix
-# 20211004
-
-apt-get install libguestfs-tools
-
-wget https://cloud.debian.org/images/cloud/bullseye/daily/latest/debian-11-generic-amd64-daily.raw
-virt-customize -a debian-11-generic-amd64-daily.raw --install qemu-guest-agent
-
-DATE=$(date +"%Y%m%d%H%M")
-qm create 100 --name "DEBIAN11-$DATE" --memory 1024 --balloon 512 --net0 virtio,bridge=vmbr0 --cores 2 --sockets 1
-qm importdisk 100 debian-11-generic-amd64-daily.raw shared-cephfs
-qm set 100 --scsihw virtio-scsi-pci --scsi0 shared-cephfs:vm-100-disk-0
-qm set 100 --serial0 socket
-qm set 100 --boot c --bootdisk scsi0
-qm set 100 --tablet 0
-qm set 100 --ostype l26
-qm set 100 --agent 1,fstrim_cloned_disks=1
-qm set 100 --scsi1 shared-cephfs:cloudinit
-qm resize 100 scsi0 +8G
-qm set 100 --ciuser mathod
-qm set 100 --cipassword mathod
-qm set 100 --ipconfig0 ip=91.121.57.85/32,gw=193.70.34.254
-qm set 100 --nameserver 8.8.8.8
-qm set 100 --onboot 1
-
-02:00:00:2f:90:3d
-qm start 100
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDY4OigF88Sji4FmVh7vYOG3hgEpiN7lTcw/9dkx2dlThjxUmS/waW+hwsl6cEXDTc034b2pdhV17Z7D1WtfrUKW4qrKurHw88e5OOrpricAIxlX05ms8JTcsOQuk+QjYg01NRIYqbUB6XXtS0dPTNhM+Ht7EbE6ykdRTOHXhqtfIbmQQ4Uep0VmbTAlvQTWuhizGL2IUIQIHFkr5q1CHq6cL2pfCi4RAut4rTjiV90/DHbg9uzQ1wNxd7cu2HZ8EQG67dzl7/Hm/9T6BBwJiYTTsGJ2l408z+NNLPo4svBic4W1XOHwy0yWlnClh5Ltk+y6ZFkx3TXmUPUWcPRaT+t ksaliba@evina-ksa
-
 add-apt-repository -y ppa:wireguard/wireguard
 apt-get update
 apt-get install -y wireguard
