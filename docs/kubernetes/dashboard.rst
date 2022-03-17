@@ -49,3 +49,29 @@ Mise à jour de l’application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Pour résumer
 ~~~~~~~~~~~~
+Présentation de l’outil kubectl
+===============================
+Préambule
+---------
+Consultation des éléments
+-------------------------
+Liste des pods
+--------------
+Liste des machines d’un cluster
+-------------------------------
+Connexion à la machine Minikube
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Liste des nœuds d’un cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Affichage des caractéristiques étendues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Le moteur Docker de Minikube
+============================
+Initialisation de l'environnement
+---------------------------------
+Installation de Docker
+----------------------
+Vérification de la communication avec le moteur Docker
+------------------------------------------------------
+Les containers associés aux pods
+--------------------------------
