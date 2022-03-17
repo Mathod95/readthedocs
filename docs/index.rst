@@ -37,3 +37,11 @@ Welcome to Read the fucking docs !
    kubernetes/kubernetes_operator
    kubernetes/appendix
    kubernetes/links
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Docker
+
+   docker/workshop
+
+   docker/  
