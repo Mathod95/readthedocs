@@ -43,9 +43,10 @@ Exemple of tool
 
 
 Infrastructure life cycle
--------------------------
+=========================
  
 What is infrastructure life cycle
+---------------------------------
 A number of clearly defined and distinct work phases (Does not literally mean a 24 hours days :D) which are used by DevOps Engineers to plan, design, build, test, deliver, maintain and retire cloud infrastructure.
 
 What is Day 0, Day 1 and Day 2
