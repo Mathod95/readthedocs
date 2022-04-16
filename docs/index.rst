@@ -40,6 +40,12 @@ Welcome to Read the fucking docs !
 
 .. toctree::
    :maxdepth: 2
+   :caption: IaC
+
+   IaC/explanation
+
+.. toctree::
+   :maxdepth: 2
    :caption: Docker
 
    docker/workshop
