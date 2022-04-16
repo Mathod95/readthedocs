@@ -46,8 +46,10 @@ Welcome to Read the fucking docs !
 
 .. toctree::
    :maxdepth: 2
-   :caption: Docker
+   :caption: Ansible
 
-   docker/workshop
-
-   docker/  
+   ansible/Presentation
+   ansible/Introduction
+   ansible/Installation
+   ansible/Configuration
+   ansible/Collections
