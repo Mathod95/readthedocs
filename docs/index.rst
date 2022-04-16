@@ -40,9 +40,9 @@ Welcome to Read the fucking docs !
 
 .. toctree::
    :maxdepth: 2
-   :caption: IaC
+   :caption: terraform
 
-   IaC/explanation
+   terraform/foreword
 
 .. toctree::
    :maxdepth: 2
