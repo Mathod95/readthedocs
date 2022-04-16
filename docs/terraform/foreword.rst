@@ -42,25 +42,17 @@ Exemple of tool
 - Pulumi - Support AWS, Azure, GCP, K8s
 
 
-What is a container ?
----------------------
-Containers before Docker
-------------------------
-Why use containers?
--------------------
-Problems introduced with containers
------------------------------------
-What will Kubernetes be used for?
----------------------------------
-External resources
-------------------
+Infrastructure life cycle
+-------------------------
+ 
+What is infrastructure life cycle
+A number of clearly defined and distinct work phases (Does not literally mean a 24 hours days :D) which are used by DevOps Engineers to plan, design, build, test, deliver, maintain and retire cloud infrastructure.
 
-A word about the application
-============================
+What is Day 0, Day 1 and Day 2
+Day 0-2 is a simplified way to describe phases of an infrastructure life cycle
+- Day 0 - Plan and design
+- Day 1 - Develop and interate
+- Day 2 - Go live and maintain
 
-There is no point in running
-----------------------------
-The twelve application factors
-------------------------------
-Microservices vs. Monoliths
----------------------------
+TODO - Plus explicative 
+https://codilime.com/blog/day-0-day-1-day-2-the-software-lifecycle-in-the-cloud-age/
