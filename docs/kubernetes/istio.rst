@@ -12,6 +12,13 @@ Micro-services et mise en réseau de services
 
 Présentation d’Istio
 --------------------
+Istio intègre plusieurs produits open source permettant de mettre en réseau un ensemble de services. Il assure une gestion du trafic, l'application de règle et la collecte de metriques
+Par nature, Istio est conçu pour gérer la communication des Micro-services d'une application. Il prend en charge de nombreuses opérations sans impacter les éléments existants:
+* Collecte des temps de communication entre services
+* Chiffrement de bout en bout entre services
+* Traçabilité des appels entre services
+* routage avancé (déploiment canari, blue/green deployment)
+* mécanisme de gestion d'érreurs
 
 Principe de fonctionnement
 --------------------------
