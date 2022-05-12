@@ -13,7 +13,9 @@ Micro-services et mise en réseau de services
 Présentation d’Istio
 --------------------
 Istio intègre plusieurs produits open source permettant de mettre en réseau un ensemble de services. Il assure une gestion du trafic, l'application de règle et la collecte de metriques
-Par nature, Istio est conçu pour gérer la communication des Micro-services d'une application. Il prend en charge de nombreuses opérations sans impacter les éléments existants:
+
+Par nature, Istio est conçu pour gérer la communication des micro-services d'une application. Il prend en charge de nombreuses opérations sans impacter les éléments existants:
+
 * Collecte des temps de communication entre services
 * Chiffrement de bout en bout entre services
 * Traçabilité des appels entre services
@@ -89,6 +91,36 @@ Sécurisation des flux
 ---------------------
 Activation de Mutual TLS (mTLS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+La puissance d'istio est qu'une fois qu'un service y est intégré, il devient possible de changer à la volée le protocole de communication et faire appel à du Mutual TLS à la place d'une communication sans chiffrement.
+
+TLS utilise des certificats pour vérifier l'athenticité de ses interlocuteurs. Dans le cas du protocole TLS simple, le client vérifie le serveur. De fait, n'importe qui peut donc communiquer avec le serveur
+
+En plus de cette vérification, le serveur peut également s'assurer de l'identité du client. On parle dans ce cas d'authentification TLS mutuelle (ou également de SSL two-way)
+
+Dans ce cas-là, le client est lui aussi soumis à une vérification pour interdire les communications externes non sollicités.
+
+L'activiation de ce mécanisme se fait à l'aide de déclaration d'objet DestinationRule dans lequel est spécifié:
+
+* Le champ ``host`` indiquant l'entrée à protéger
+* Le champ ``trafficPolicy`` indiquant le mode souhaité
+
+.. note::
+    Pour activer l'utilisation du protocole mTLS sur le service XXX du namespace XXX, déclarez le cotenue suivant:
+
+    .. code-block::
+
+        apiVersion: networking.istio.io/v1alpha3
+        kind: DestinationRule
+        metadata:
+          name: xxx
+          namespace: xxx
+        spec:
+          host: ratings.prod.svc.cluster.local
+          trafficPolicy:
+            tls:
+              mode: ISTIO_MUTUAL
+
+
 Consultation des polices du service MailHog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Forcer l’utilisation de mTLS
